@@ -1,0 +1,718 @@
+{
+  "metadata": {
+    "nombre": "Ecosistema Inteligente Open Group",
+    "version": "2.0"
+  },
+
+  "metricas": ["seguridad", "productividad", "continuidad"],
+
+  "simulacion": {
+    "rondas": [
+      {
+        "id": "ronda_1_base",
+        "escenario": "Tu equipo empieza a trabajar híbrido. Cada área resuelve 'como puede'.",
+        "opciones": [
+          {
+            "texto": "Estandarizamos equipos y espacios desde el inicio",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo", "mobiliario"],
+            "impacto": "Tu operación gana estabilidad"
+          },
+          {
+            "texto": "Cada área compra lo que necesita",
+            "tipo": "suboptima",
+            "componentes": ["equipos_computo"],
+            "riesgo_oculto": "ineficiencia_operativa",
+            "impacto": "Esto genera costos invisibles"
+          },
+          {
+            "texto": "Usan sus propios equipos personales",
+            "tipo": "incorrecta",
+            "componentes": [],
+            "riesgo_forzado": "vulnerabilidad_ciberseguridad",
+            "impacto": "Riesgo crítico detectado"
+          },
+          {
+            "texto": "Implementamos política BYOD con control básico de acceso",
+            "tipo": "suboptima",
+            "componentes": ["equipos_computo"],
+            "riesgo_oculto": "vulnerabilidad_ciberseguridad",
+            "impacto": "Control parcial: deja brechas de seguridad en dispositivos personales"
+          }
+        ]
+      },
+      {
+        "id": "ronda_2_colaboracion",
+        "escenario": "Tu equipo remoto pierde tiempo coordinando tareas y reuniones.",
+        "opciones": [
+          {
+            "texto": "Centralizamos comunicación en una sola plataforma",
+            "tipo": "correcta",
+            "componentes": ["software_colaboracion", "perifericos_colaboracion"],
+            "impacto": "La comunicación fluye sin fricción"
+          },
+          {
+            "texto": "Usamos varias apps según el caso",
+            "tipo": "suboptima",
+            "componentes": ["software_colaboracion"],
+            "riesgo_oculto": "ineficiencia_operativa",
+            "impacto": "Múltiples silos rompen la productividad"
+          },
+          {
+            "texto": "Cada quien se organiza como puede",
+            "tipo": "incorrecta",
+            "componentes": [],
+            "riesgo_forzado": "baja_productividad",
+            "impacto": "Descoordinación total detectada"
+          },
+          {
+            "texto": "Adoptamos la plataforma sin formación ni onboarding al equipo",
+            "tipo": "suboptima",
+            "componentes": ["software_colaboracion"],
+            "riesgo_oculto": "ineficiencia_operativa",
+            "impacto": "La herramienta existe pero el equipo no la usa — inversión sin retorno"
+          }
+        ]
+      },
+      {
+        "id": "ronda_3_seguridad",
+        "escenario": "Un colaborador pierde su laptop con información sensible.",
+        "opciones": [
+          {
+            "texto": "Bloqueamos acceso y protegemos los datos al instante",
+            "tipo": "correcta",
+            "componentes": ["seguridad_endpoint"],
+            "impacto": "Tus datos están blindados"
+          },
+          {
+            "texto": "Confiamos en contraseñas y antivirus",
+            "tipo": "suboptima",
+            "componentes": [],
+            "riesgo_oculto": "vulnerabilidad_ciberseguridad",
+            "impacto": "Protección insuficiente. Falsa seguridad."
+          },
+          {
+            "texto": "No tenemos control sobre eso",
+            "tipo": "incorrecta",
+            "componentes": [],
+            "riesgo_forzado": "vulnerabilidad_ciberseguridad",
+            "impacto": "Riesgo de brecha inminente"
+          },
+          {
+            "texto": "Ciframos el disco pero sin gestión centralizada del dispositivo",
+            "tipo": "suboptima",
+            "componentes": [],
+            "riesgo_oculto": "vulnerabilidad_ciberseguridad",
+            "impacto": "El cifrado ayuda, pero sin borrado remoto la información sigue expuesta"
+          }
+        ]
+      },
+      {
+        "id": "ronda_4_resiliencia",
+        "escenario": "Un sistema crítico falla en plena operación.",
+        "opciones": [
+          {
+            "texto": "Restauramos todo en minutos sin afectar la operación",
+            "tipo": "correcta",
+            "componentes": ["backup"],
+            "impacto": "Continuidad garantizada"
+          },
+          {
+            "texto": "Recuperamos manualmente con respaldos parciales",
+            "tipo": "suboptima",
+            "componentes": ["backup"],
+            "riesgo_oculto": "ineficiencia_operativa",
+            "impacto": "La recuperación genera parálisis temporal"
+          },
+          {
+            "texto": "Dependemos de que todo vuelva a funcionar",
+            "tipo": "incorrecta",
+            "componentes": [],
+            "riesgo_forzado": "perdida_informacion",
+            "impacto": "Posible pérdida de datos catastrófica"
+          },
+          {
+            "texto": "Migramos a la nube sin validar el plan de recuperación",
+            "tipo": "suboptima",
+            "componentes": ["backup"],
+            "riesgo_oculto": "ineficiencia_operativa",
+            "impacto": "La nube no garantiza recuperación si el plan nunca fue probado en producción"
+          }
+        ]
+      },
+      {
+        "id": "ronda_5_soporte",
+        "escenario": "Tu equipo pierde tiempo resolviendo problemas técnicos.",
+        "opciones": [
+          {
+            "texto": "Tenemos soporte proactivo que previene fallos",
+            "tipo": "correcta",
+            "componentes": ["soporte_servicios"],
+            "impacto": "Cero interrupciones. Foco en negocio."
+          },
+          {
+            "texto": "Llamamos soporte cuando algo falla",
+            "tipo": "suboptima",
+            "componentes": ["soporte_servicios"],
+            "riesgo_oculto": "ineficiencia_operativa",
+            "impacto": "El modo reactivo cuesta horas operativas"
+          },
+          {
+            "texto": "El equipo lo resuelve como puede",
+            "tipo": "incorrecta",
+            "componentes": [],
+            "riesgo_forzado": "ineficiencia_operativa",
+            "impacto": "Fuga masiva de tiempo y recursos"
+          },
+          {
+            "texto": "Externalizamos soporte sin SLA ni indicadores de desempeño",
+            "tipo": "suboptima",
+            "componentes": [],
+            "riesgo_oculto": "ineficiencia_operativa",
+            "impacto": "Soporte externo sin compromisos medibles — las fallas siguen sin control"
+          }
+        ]
+      },
+      {
+        "id": "ronda_6_escala",
+        "escenario": "Tu empresa crece y necesita escalar su tecnología.",
+        "opciones": [
+          {
+            "texto": "Todo está integrado en un modelo flexible y escalable",
+            "tipo": "correcta",
+            "componentes": ["modelo_daas"],
+            "impacto": "Escalabilidad inteligente asegurada"
+          },
+          {
+            "texto": "Seguimos comprando equipos según necesidad",
+            "tipo": "suboptima",
+            "componentes": [],
+            "riesgo_oculto": "fragmentacion_tecnologica",
+            "impacto": "Costos de capital no planificados"
+          },
+          {
+            "texto": "Crecemos sin estrategia tecnológica",
+            "tipo": "incorrecta",
+            "componentes": [],
+            "riesgo_forzado": "fragmentacion_tecnologica",
+            "impacto": "Caos operativo asegurado al escalar"
+          },
+          {
+            "texto": "Adoptamos SaaS sin integrar con los sistemas actuales",
+            "tipo": "suboptima",
+            "componentes": [],
+            "riesgo_oculto": "fragmentacion_tecnologica",
+            "impacto": "Nuevas herramientas aisladas — deuda tecnológica que crece con el negocio"
+          }
+        ]
+      }
+    ]
+  },
+
+  "configuracion": {
+    "pesos_estrategicos": {
+      "seguridad": 1.5,
+      "continuidad": 1.3,
+      "productividad": 1.0
+    },
+    "umbrales_metricas": {
+      "bajo": [0, 5],
+      "medio": [6, 10],
+      "alto": [11, null]
+    },
+    "penalizaciones_riesgo": {
+      "critico": 30,
+      "alto": 20,
+      "medio": 10
+    },
+    "niveles": {
+      "fragmentado": 1,
+      "parcial": 2,
+      "optimizado": 3,
+      "ecosistema_inteligente": 4
+    },
+    "colores_estado": {
+      "fragmentado": "rojo",
+      "parcial": "amarillo",
+      "optimizado": "verde",
+      "ecosistema_inteligente": "verde"
+    }
+  },
+
+  "riesgos": {
+    "vulnerabilidad_ciberseguridad": {
+      "impacto": "alto",
+      "descripcion": "Sistemas expuestos a amenazas y ataques"
+    },
+    "perdida_informacion": {
+      "impacto": "critico",
+      "descripcion": "No hay recuperación ante fallos o incidentes"
+    },
+    "baja_productividad": {
+      "impacto": "medio",
+      "descripcion": "Herramientas no optimizadas para el trabajo"
+    },
+    "ineficiencia_operativa": {
+      "impacto": "alto",
+      "descripcion": "Procesos manuales o desorganizados"
+    },
+    "fragmentacion_tecnologica": {
+      "impacto": "critico",
+      "descripcion": "Soluciones aisladas sin integración"
+    }
+  },
+
+  "componentes": {
+    "equipos_computo": {
+      "nombre": "Equipos de Cómputo",
+      "tipo": "hardware",
+      "aporta": {
+        "productividad": 2
+      }
+    },
+    "perifericos_colaboracion": {
+      "nombre": "Periféricos de Colaboración",
+      "tipo": "hardware",
+      "aporta": {
+        "productividad": 1
+      }
+    },
+    "software_colaboracion": {
+      "nombre": "Software de Colaboración",
+      "tipo": "software",
+      "aporta": {
+        "productividad": 3
+      }
+    },
+    "seguridad_endpoint": {
+      "nombre": "Seguridad Endpoint",
+      "tipo": "seguridad",
+      "aporta": {
+        "seguridad": 3
+      }
+    },
+    "backup": {
+      "nombre": "Backup",
+      "tipo": "resiliencia",
+      "aporta": {
+        "continuidad": 3
+      }
+    },
+    "soporte_servicios": {
+      "nombre": "Soporte y Servicios",
+      "tipo": "servicio",
+      "aporta": {
+        "continuidad": 2,
+        "productividad": 1
+      }
+    },
+    "mobiliario": {
+      "nombre": "Mobiliario",
+      "tipo": "entorno",
+      "aporta": {
+        "productividad": 1
+      }
+    },
+    "modelo_daas": {
+      "nombre": "DaaS (Device as a Service)",
+      "tipo": "modelo",
+      "aporta": {
+        "productividad": 2,
+        "continuidad": 2
+      }
+    }
+  },
+
+  "dependencias": [
+    {
+      "componente": "equipos_computo",
+      "requiere": ["seguridad_endpoint", "soporte_servicios"],
+      "riesgos": ["vulnerabilidad_ciberseguridad", "ineficiencia_operativa"]
+    },
+    {
+      "componente": "perifericos_colaboracion",
+      "requiere": ["software_colaboracion"],
+      "riesgos": ["baja_productividad"]
+    },
+    {
+      "componente": "software_colaboracion",
+      "requiere": ["equipos_computo", "perifericos_colaboracion"],
+      "riesgos": ["baja_productividad"]
+    },
+    {
+      "componente": "seguridad_endpoint",
+      "requiere": ["soporte_servicios"],
+      "riesgos": ["vulnerabilidad_ciberseguridad"]
+    },
+    {
+      "componente": "backup",
+      "requiere": ["seguridad_endpoint"],
+      "riesgos": ["perdida_informacion"]
+    },
+    {
+      "componente": "modelo_daas",
+      "requiere": [
+        "equipos_computo",
+        "software_colaboracion",
+        "seguridad_endpoint",
+        "backup",
+        "soporte_servicios"
+      ],
+      "riesgos": ["fragmentacion_tecnologica"]
+    }
+  ],
+
+  "sinergias": [
+    {
+      "id": "productividad_digital",
+      "nombre": "Productividad Digital",
+      "componentes": ["equipos_computo", "software_colaboracion"],
+      "beneficio": "productividad",
+      "peso": 2
+    },
+    {
+      "id": "proteccion_integral",
+      "nombre": "Protección Integral",
+      "componentes": ["seguridad_endpoint", "backup"],
+      "beneficio": "continuidad",
+      "peso": 3
+    },
+    {
+      "id": "continuidad_operativa",
+      "nombre": "Continuidad Operativa",
+      "componentes": ["equipos_computo", "soporte_servicios"],
+      "beneficio": "continuidad",
+      "peso": 2
+    },
+    {
+      "id": "colaboracion_efectiva",
+      "nombre": "Colaboración Efectiva",
+      "componentes": ["perifericos_colaboracion", "software_colaboracion"],
+      "beneficio": "productividad",
+      "peso": 2
+    },
+    {
+      "id": "ecosistema_inteligente",
+      "nombre": "Ecosistema Inteligente",
+      "componentes": [
+        "equipos_computo",
+        "software_colaboracion",
+        "seguridad_endpoint",
+        "backup",
+        "soporte_servicios"
+      ],
+      "beneficio": "ecosistema_inteligente",
+      "peso": 5
+    },
+    {
+      "id": "gestion_simplificada",
+      "nombre": "Gestión Simplificada",
+      "componentes": [
+        "modelo_daas",
+        "equipos_computo",
+        "software_colaboracion",
+        "seguridad_endpoint",
+        "backup",
+        "soporte_servicios"
+      ],
+      "beneficio": "gestion_simplificada",
+      "peso": 4
+    }
+  ],
+
+  "diagnosticos": {
+    "fragmentado": {
+      "mensaje": "Tu ecosistema tecnológico presenta brechas críticas que comprometen la operación.",
+      "nivel": "bajo",
+      "resumen": "Existen riesgos severos sin resolver. Se requiere acción inmediata para proteger la operación."
+    },
+    "parcial": {
+      "mensaje": "Tu ecosistema tiene componentes valiosos pero falta integración completa.",
+      "nivel": "medio",
+      "resumen": "Hay oportunidades claras de mejora para alcanzar un ecosistema robusto y conectado."
+    },
+    "optimizado": {
+      "mensaje": "Tu ecosistema está bien balanceado y cubre las necesidades operativas clave.",
+      "nivel": "alto",
+      "resumen": "Las métricas son saludables. Considera sinergias adicionales para maximizar el valor."
+    },
+    "ecosistema_inteligente": {
+      "mensaje": "Felicidades. Tu ecosistema tecnológico opera como una unidad integrada e inteligente.",
+      "nivel": "alto",
+      "resumen": "Máxima sinergia alcanzada. Protección, productividad y continuidad en su punto óptimo."
+    }
+  },
+
+  "insights_reglas": [
+    {
+      "tipo": "metrica_nivel",
+      "condicion": { "metrica": "seguridad", "nivel": "bajo" },
+      "mensaje": "Tu ecosistema carece de protección adecuada contra amenazas digitales.",
+      "prioridad": 1
+    },
+    {
+      "tipo": "metrica_nivel",
+      "condicion": { "metrica": "continuidad", "nivel": "bajo" },
+      "mensaje": "No cuentas con un plan de continuidad. Un incidente podría detener tu operación.",
+      "prioridad": 1
+    },
+    {
+      "tipo": "metrica_nivel",
+      "condicion": { "metrica": "productividad", "nivel": "bajo" },
+      "mensaje": "Las herramientas actuales no están potenciando la productividad de tu equipo.",
+      "prioridad": 2
+    },
+    {
+      "tipo": "metrica_nivel",
+      "condicion": { "metrica": "seguridad", "nivel": "alto" },
+      "mensaje": "Excelente nivel de seguridad. Tus sistemas están bien protegidos.",
+      "prioridad": 3
+    },
+    {
+      "tipo": "metrica_nivel",
+      "condicion": { "metrica": "productividad", "nivel": "alto" },
+      "mensaje": "Sólida base de productividad. Tus herramientas están bien alineadas al trabajo.",
+      "prioridad": 3
+    },
+    {
+      "tipo": "metrica_nivel",
+      "condicion": { "metrica": "continuidad", "nivel": "alto" },
+      "mensaje": "Tu operación cuenta con respaldo sólido ante incidentes.",
+      "prioridad": 3
+    },
+    {
+      "tipo": "riesgo_activo",
+      "condicion": { "riesgo": "vulnerabilidad_ciberseguridad" },
+      "mensaje": "Tus sistemas están expuestos a ciberamenazas. La seguridad debe ser prioridad.",
+      "prioridad": 1
+    },
+    {
+      "tipo": "riesgo_activo",
+      "condicion": { "riesgo": "perdida_informacion" },
+      "mensaje": "Sin respaldo de datos, un fallo podría significar pérdida total de información.",
+      "prioridad": 1
+    },
+    {
+      "tipo": "riesgo_activo",
+      "condicion": { "riesgo": "fragmentacion_tecnologica" },
+      "mensaje": "Tus soluciones tecnológicas operan de forma aislada, reduciendo su efectividad.",
+      "prioridad": 1
+    },
+    {
+      "tipo": "componente_faltante",
+      "condicion": { "componente": "soporte_servicios" },
+      "mensaje": "La falta de soporte técnico impacta directamente la continuidad de tu operación.",
+      "prioridad": 2
+    },
+    {
+      "tipo": "componente_faltante",
+      "condicion": { "componente": "backup" },
+      "mensaje": "Sin backup, no hay recuperación posible ante un incidente de datos.",
+      "prioridad": 1
+    },
+    {
+      "tipo": "componente_faltante",
+      "condicion": { "componente": "seguridad_endpoint" },
+      "mensaje": "Tus equipos están desprotegidos sin una solución de seguridad endpoint.",
+      "prioridad": 1
+    },
+    {
+      "tipo": "sinergia_cercana",
+      "condicion": { "sinergia": "ecosistema_inteligente" },
+      "mensaje": "Estás muy cerca de alcanzar un Ecosistema Inteligente completo.",
+      "prioridad": 2
+    },
+    {
+      "tipo": "sinergia_cercana",
+      "condicion": { "sinergia": "proteccion_integral" },
+      "mensaje": "Agregar un componente más desbloquearía la sinergia de Protección Integral.",
+      "prioridad": 2
+    }
+  ],
+
+  "tension_narrativa": {
+    "umbral_ecosistema": 85,
+
+    "narrativas": {
+      "fragmentado": {
+        "headline": "Tu infraestructura está en riesgo",
+        "submensaje": "Existen brechas críticas que pueden detener tu operación en cualquier momento."
+      },
+      "parcial": {
+        "headline": "Vas por buen camino, pero hay brechas",
+        "submensaje": "Tu ecosistema tiene potencial, pero necesita componentes clave para funcionar de forma segura."
+      },
+      "optimizado": {
+        "headline": "Buen nivel de integración",
+        "submensaje": "Tu ecosistema cubre lo esencial. Estás a un paso de la máxima eficiencia."
+      },
+      "ecosistema_inteligente": {
+        "headline": "Ecosistema completamente integrado",
+        "submensaje": "Tu tecnología trabaja como una sola unidad. Máxima eficiencia alcanzada."
+      }
+    },
+
+    "impactos": {
+      "fragmentado": {
+        "urgencia": "alta",
+        "nivel_impacto": "critico",
+        "mensaje": "Tu operación está en riesgo de interrupción.",
+        "consecuencia": "Un fallo podría detener tu negocio sin posibilidad de recuperación inmediata."
+      },
+      "parcial": {
+        "urgencia": "media",
+        "nivel_impacto": "alto",
+        "mensaje": "Tu negocio opera con puntos ciegos que pueden escalar.",
+        "consecuencia": "Las brechas actuales pueden convertirse en incidentes costosos si no se atienden."
+      },
+      "optimizado": {
+        "urgencia": "baja",
+        "nivel_impacto": "medio",
+        "mensaje": "Tu operación es estable pero no está maximizada.",
+        "consecuencia": "Estás dejando valor sobre la mesa al no activar todas las sinergias disponibles."
+      },
+      "ecosistema_inteligente": {
+        "urgencia": "baja",
+        "nivel_impacto": "bajo",
+        "mensaje": "Tu ecosistema opera en máxima eficiencia.",
+        "consecuencia": "Tu inversión tecnológica está generando el máximo retorno posible."
+      }
+    },
+
+    "urgencia_accion": {
+      "fragmentado": {
+        "tiempo_estimado": "inmediato",
+        "mensaje": "Cada día sin protección aumenta el riesgo de pérdida crítica."
+      },
+      "parcial": {
+        "tiempo_estimado": "esta semana",
+        "mensaje": "Las brechas actuales pueden escalar a incidentes reales si no actúas pronto."
+      },
+      "optimizado": {
+        "tiempo_estimado": "próximo ciclo",
+        "mensaje": "Un paso más te separa del máximo rendimiento de tu inversión."
+      },
+      "ecosistema_inteligente": {
+        "tiempo_estimado": "mantenimiento",
+        "mensaje": "Mantén tu ecosistema actualizado para preservar la eficiencia alcanzada."
+      }
+    },
+
+    "comparativas": {
+      "fragmentado": {
+        "antes": "Infraestructura fragmentada con alto riesgo operativo",
+        "despues": "Ecosistema integrado, seguro y optimizado con Open Group"
+      },
+      "parcial": {
+        "antes": "Ecosistema con brechas que limitan productividad y seguridad",
+        "despues": "Operación fluida con tecnología integrada por Open Group"
+      },
+      "optimizado": {
+        "antes": "Buen ecosistema pero sin máxima sinergia entre componentes",
+        "despues": "Ecosistema inteligente con todas las sinergias activas"
+      },
+      "ecosistema_inteligente": {
+        "antes": "Soluciones tecnológicas aisladas y descoordinadas",
+        "despues": "Ecosistema unificado operando en máxima eficiencia con Open Group"
+      }
+    },
+
+    "progreso_emocional": [
+      { "max": 20, "mensaje": "Estás lejos de un ecosistema óptimo", "tono": "urgente" },
+      { "max": 40, "mensaje": "Has dado los primeros pasos, pero el camino es largo", "tono": "motivador" },
+      { "max": 60, "mensaje": "Tu ecosistema empieza a tomar forma", "tono": "positivo" },
+      { "max": 80, "mensaje": "Vas por buen camino hacia un ecosistema robusto", "tono": "entusiasta" },
+      { "max": 95, "mensaje": "Estás muy cerca de la máxima eficiencia", "tono": "celebratorio" },
+      { "max": 100, "mensaje": "Tu ecosistema opera al máximo nivel", "tono": "triunfal" }
+    ],
+
+    "siguiente_logro_por_componente": {
+      "seguridad_endpoint": "Integrar seguridad endpoint te acerca significativamente a un ecosistema protegido",
+      "backup": "Activar backup con Open Group desbloquea la sinergia de Protección Integral",
+      "soporte_servicios": "Agregar soporte garantiza continuidad y desbloquea nuevas sinergias",
+      "software_colaboracion": "Incorporar colaboración digital potencia la productividad del equipo",
+      "equipos_computo": "Equipos de cómputo son la base para activar múltiples sinergias",
+      "perifericos_colaboracion": "Periféricos de colaboración completan la experiencia de trabajo en equipo",
+      "modelo_daas": "El modelo DaaS con Open Group simplifica toda la gestión tecnológica",
+      "mobiliario": "Espacios ergonómicos completan el entorno productivo"
+    },
+
+    "evento_wow": {
+      "tipo": "ecosistema_completo",
+      "mensaje": "Tu empresa ahora opera con máxima eficiencia y seguridad.",
+      "impacto_negocio": "Reducción de riesgos, mejora en productividad y continuidad garantizada con Open Group.",
+      "submensaje": "Cada componente trabaja en sinergia. Tu inversión tecnológica genera el máximo retorno."
+    },
+
+    "acciones_por_componente": {
+      "seguridad_endpoint": {
+        "accion": "Implementar Seguridad Endpoint con Open Group",
+        "impacto": "Reduce la exposición a ciberataques y protege la información del negocio",
+        "valor": "Gestión completa sin complejidad operativa"
+      },
+      "backup": {
+        "accion": "Activar Backup gestionado con Open Group",
+        "impacto": "Garantiza la recuperación de información ante cualquier incidente",
+        "valor": "Respaldo automatizado y monitoreo continuo"
+      },
+      "soporte_servicios": {
+        "accion": "Contratar Soporte y Servicios de Open Group",
+        "impacto": "Asegura continuidad operativa y resolución rápida de incidentes",
+        "valor": "Equipo especializado disponible cuando lo necesitas"
+      },
+      "software_colaboracion": {
+        "accion": "Implementar Software de Colaboración con Open Group",
+        "impacto": "Potencia la productividad y comunicación del equipo",
+        "valor": "Herramientas integradas y configuradas para tu operación"
+      },
+      "equipos_computo": {
+        "accion": "Renovar Equipos de Cómputo con Open Group",
+        "impacto": "Base fundamental para la productividad de cualquier operación",
+        "valor": "Equipos optimizados y listos para trabajar desde el día uno"
+      },
+      "perifericos_colaboracion": {
+        "accion": "Incorporar Periféricos de Colaboración con Open Group",
+        "impacto": "Mejora la experiencia en reuniones y trabajo en equipo",
+        "valor": "Soluciones profesionales para comunicación efectiva"
+      },
+      "modelo_daas": {
+        "accion": "Adoptar Device as a Service con Open Group",
+        "impacto": "Simplifica la gestión tecnológica y optimiza costos operativos",
+        "valor": "Tecnología siempre actualizada sin inversión de capital"
+      },
+      "mobiliario": {
+        "accion": "Equipar espacios con Mobiliario de Open Group",
+        "impacto": "Mejora el bienestar y rendimiento del equipo",
+        "valor": "Entornos ergonómicos diseñados para productividad"
+      }
+    },
+
+    "acciones_por_riesgo": {
+      "vulnerabilidad_ciberseguridad": {
+        "accion": "Blindar la operación con Ciberseguridad de Open Group",
+        "impacto": "Evita pérdidas económicas y daño reputacional por ciberataques",
+        "valor": "Protección proactiva gestionada por especialistas"
+      },
+      "perdida_informacion": {
+        "accion": "Proteger datos críticos con Backup de Open Group",
+        "impacto": "Un solo incidente sin respaldo puede costar miles de horas de trabajo",
+        "valor": "Recuperación garantizada en tiempo récord"
+      },
+      "ineficiencia_operativa": {
+        "accion": "Optimizar procesos con Soporte de Open Group",
+        "impacto": "Elimina cuellos de botella y reduce tiempos muertos en la operación",
+        "valor": "Procesos estandarizados y soporte especializado"
+      },
+      "baja_productividad": {
+        "accion": "Potenciar productividad con soluciones de Open Group",
+        "impacto": "Cada hora perdida por herramientas inadecuadas es costo directo para el negocio",
+        "valor": "Herramientas correctas configuradas para tu equipo"
+      },
+      "fragmentacion_tecnologica": {
+        "accion": "Unificar tecnología con el Ecosistema de Open Group",
+        "impacto": "Elimina silos y maximiza el retorno de la inversión tecnológica",
+        "valor": "Un solo partner tecnológico para toda tu operación"
+      }
+    }
+  }
+}
