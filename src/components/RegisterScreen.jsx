@@ -51,7 +51,7 @@ export default function RegisterScreen({ onRegister }) {
         {/* ── Top bar ── */}
         <header className="ac-topbar">
           <div className="brand-mark">
-            <span className="wordmark">OPEN <span className="accent">GROUP</span></span>
+            <img src="/CORTES/LOGO-OPEN-FORUM.png" alt="Open Forum" className="brand-logo" />
           </div>
           <div className="ac-step" aria-label="Paso 1 de 3">
             <span>Paso 01 / 03</span>

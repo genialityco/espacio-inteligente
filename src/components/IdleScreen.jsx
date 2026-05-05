@@ -13,10 +13,14 @@ export default function IdleScreen({ onStart }) {
       <div className="stage-content">
         <header className="stage-brand">
           <div className="brand-mark">
-            <span className="wordmark">OPEN <span className="accent">GROUP</span></span>
+            <img src="/CORTES/LOGO-OPEN-FORUM.png" alt="Open Forum" className="brand-logo" />
           </div>
           <div className="business-line">Espacio Inteligente</div>
         </header>
+
+        <div className="qqm-logo-wrap">
+          <img src="/CORTES/LOGO_QQM.png" alt="Espacio Inteligente" className="qqm-logo" />
+        </div>
 
         <section className="stage-hero">
           <div className="stage-eyebrow">El reto comienza ahora</div>
@@ -37,6 +41,11 @@ export default function IdleScreen({ onStart }) {
             </button>
           </div>
           <p className="cta-label">Toca para descubrir</p>
+
+          <div className="idle-bottom">
+            <img src="/CORTES/TEXTO_SLOGAN_INTRO.png" alt="Slogan" className="idle-slogan" />
+            <img src="/CORTES/LOGO-OPEN-GROUP.png" alt="Open Group" className="idle-open-group-logo" />
+          </div>
         </section>
 
         <footer className="stage-footer">
