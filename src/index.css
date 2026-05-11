@@ -192,12 +192,26 @@ html, body {
 
 /* Graph panel — top in portrait, right in landscape */
 .right-panel {
-  flex: 0 0 42dvh;
+  flex: 0 0 46dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: radial-gradient(ellipse 80% 80% at 50% 65%, rgba(59,130,246,0.06) 0%, transparent 70%);
+}
+
+/* Área del grafo: ocupa el espacio restante después del topbar */
+.right-panel-graph {
+  flex: 1;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: radial-gradient(ellipse 80% 80% at 50% 55%, rgba(59,130,246,0.06) 0%, transparent 70%);
+  min-height: 0;
+}
+
+/* Shift graph upward — transform is layout-neutral, won't affect left-panel sizing */
+.right-panel-graph .graph-svg {
+  transform: translateY(-12%);
 }
 
 /* Questions panel — bottom in portrait, left in landscape */
@@ -280,7 +294,7 @@ html, body {
 
 .scenario-card h3 {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: clamp(9px, 1.3vw, 16px);
+  font-size: clamp(12px, 1.8vw, 22px);
   color: #8DC63F;
   text-transform: uppercase;
   letter-spacing: 0.42em;
@@ -302,7 +316,7 @@ html, body {
 
 .scenario-card h2 {
   font-family: 'Manrope', sans-serif;
-  font-size: clamp(1rem, 3vw, 2.4rem);
+  font-size: clamp(1rem, 3.5vw, 3rem);
   font-weight: 800;
   line-height: 1.28;
   color: var(--text-primary);
@@ -325,7 +339,7 @@ html, body {
   border-radius: 14px;
   text-align: left;
   font-family: 'Manrope', sans-serif;
-  font-size: clamp(0.82rem, 1.8vw, 1.4rem);
+  font-size: clamp(0.85rem, 2.2vw, 1.8rem);
   font-weight: 500;
   color: var(--text-primary);
   cursor: pointer;
@@ -333,7 +347,7 @@ html, body {
   display: flex;
   align-items: center;
   gap: clamp(0.6rem, 1.5vw, 0.9rem);
-  min-height: clamp(44px, 5.5dvh, 66px);
+  min-height: clamp(50px, 6.5dvh, 85px);
   line-height: 1.35;
   width: 100%;
   position: relative;
@@ -381,7 +395,7 @@ html, body {
 
 .lifelines-label {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: clamp(8px, 1.1vw, 13px);
+  font-size: clamp(10px, 1.4vw, 18px);
   letter-spacing: 0.38em;
   text-transform: uppercase;
   color: rgba(141,198,63,0.45);
@@ -393,13 +407,13 @@ html, body {
   display: inline-flex;
   align-items: center;
   gap: clamp(4px, 0.8vw, 7px);
-  padding: clamp(5px, 1vw, 8px) clamp(10px, 2vw, 18px);
+  padding: clamp(7px, 1.3vw, 12px) clamp(12px, 2.5vw, 24px);
   background: rgba(141,198,63,0.07);
   border: 1px solid rgba(141,198,63,0.22);
   border-radius: 50px;
   font-family: 'Manrope', sans-serif;
   font-weight: 700;
-  font-size: clamp(0.68rem, 1.4vw, 1.1rem);
+  font-size: clamp(0.78rem, 1.7vw, 1.5rem);
   color: #8DC63F;
   cursor: pointer;
   position: relative;
@@ -573,7 +587,7 @@ html, body {
   position: absolute;
   bottom: clamp(1rem, 3vw, 2rem);
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(clamp(-28px, -4vh, -70px));
   text-align: center;
   pointer-events: none;
 }
@@ -598,25 +612,27 @@ html, body {
 
 /* ── SVG Graph ──────────────────────────────────── */
 .graph-svg {
-  width: 90%;
-  height: 90%;
-  filter: drop-shadow(0 0 24px rgba(0,0,0,0.6));
+  width: 92%;
+  height: 92%;
+  filter: drop-shadow(0 0 32px rgba(0,0,0,0.7)) drop-shadow(0 0 22px rgba(6,182,212,0.14));
 }
 
 .node-group       { transition: opacity 0.4s ease; cursor: default; }
-.node-circle      { transition: all 0.4s cubic-bezier(0.4,0,0.2,1); }
+.node-circle      { transition: fill 0.35s cubic-bezier(0.4,0,0.2,1), stroke-opacity 0.35s, r 0.35s; }
 .node-text {
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   fill: var(--text-primary);
   text-anchor: middle;
   pointer-events: none;
-  transition: opacity 0.4s;
+  transition: opacity 0.4s, font-size 0.35s;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
-.node-group.fade-out              { opacity: 0.12; }
-.node-group.active .node-circle   { filter: drop-shadow(0 0 14px currentColor); }
+.node-group.fade-out            { opacity: 0.12; }
+.node-group.active .node-circle { filter: drop-shadow(0 0 10px currentColor); }
 
 .synergy-line {
   stroke-dasharray: 10;
@@ -951,8 +967,8 @@ html, body {
 }
 
 .round-dot {
-  width: clamp(8px, 1.5vw, 11px);
-  height: clamp(8px, 1.5vw, 11px);
+  width: clamp(10px, 2vw, 16px);
+  height: clamp(10px, 2vw, 16px);
   border-radius: 50%;
   background: var(--node-base);
   transition: all 0.3s ease;
@@ -985,7 +1001,7 @@ html, body {
 
 .timer-secs {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: clamp(0.7rem, 1.8vw, 1.15rem);
+  font-size: clamp(0.8rem, 2.2vw, 1.6rem);
   font-weight: 600;
   color: #8DC63F;
   min-width: 2.5em;
@@ -997,8 +1013,8 @@ html, body {
 
 /* ── Option label (A / B / C / D) ──────────────── */
 .option-label {
-  width: clamp(26px, 3.5vw, 46px);
-  height: clamp(26px, 3.5vw, 46px);
+  width: clamp(30px, 4.5vw, 60px);
+  height: clamp(30px, 4.5vw, 60px);
   background: rgba(141,198,63,0.1);
   border: 1px solid rgba(141,198,63,0.28);
   border-radius: 7px;
@@ -2120,3 +2136,347 @@ html, body {
 @media (min-width: 900px) {
   .ac-content { max-width: 780px; }
 }
+
+/* ── Sector Select Screen (sss) ─────────────────────────────
+   Target: 1080×1920 portrait kiosk
+   Distribución: space-between, tarjetas con altura fija, efecto teal
+   ─────────────────────────────────────────────────────────── */
+.sss-content {
+  position: relative;
+  z-index: 1;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(28px, 4vh, 64px) clamp(32px, 4.5vw, 80px) clamp(24px, 3.5vh, 56px);
+  width: 100%;
+  max-width: 1020px;
+  margin: 0 auto;
+}
+
+/* Topbar */
+.sss-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.sss-logo-forum {
+  height: clamp(40px, 5.1vh, 84px);
+  width: auto;
+  object-fit: contain;
+}
+
+/* Hero: QQM logo + eyebrow */
+.sss-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(8px, 1vh, 16px);
+  flex-shrink: 0;
+}
+
+.sss-logo-qqm {
+  width: clamp(101px, 12vh, 209px);
+  height: clamp(101px, 12vh, 209px);
+  object-fit: contain;
+  filter: drop-shadow(0 0 24px rgba(141,198,63,0.28));
+}
+
+/* Heading */
+.sss-heading {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 0.8vh, 12px);
+  flex-shrink: 0;
+}
+
+/* Sector grid: 2×2 + último centrado */
+.sss-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(12px, 1.4vh, 22px);
+  align-content: start;
+  flex-shrink: 0;
+}
+
+/* Tarjeta sector — efecto teal + esquinas redondeadas */
+.sss-card {
+  height: clamp(130px, 14vh, 250px);
+  background: rgba(2, 18, 24, 0.70);
+  border: 1.5px solid rgba(0, 195, 225, 0.40);
+  border-top: 2.5px solid rgba(0, 210, 245, 0.75);
+  border-radius: clamp(16px, 2vw, 26px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 1vh, 16px);
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-tap-highlight-color: transparent;
+  backdrop-filter: blur(16px);
+  padding: clamp(12px, 1.6vh, 26px) clamp(14px, 2vw, 28px);
+  box-shadow:
+    0 0 0 1px rgba(0, 200, 230, 0.06),
+    0 0 18px rgba(0, 200, 230, 0.12),
+    inset 0 0 22px rgba(0, 200, 230, 0.04);
+}
+
+.sss-card:hover,
+.sss-card:active {
+  background: rgba(0, 30, 42, 0.80);
+  border-color: rgba(0, 220, 255, 0.82);
+  border-top-color: rgba(0, 230, 255, 1);
+  transform: translateY(-3px) scale(1.016);
+  box-shadow:
+    0 0 0 1.5px rgba(0, 220, 255, 0.22),
+    0 0 32px rgba(0, 220, 255, 0.32),
+    inset 0 0 20px rgba(0, 220, 255, 0.07),
+    0 14px 44px rgba(0, 0, 0, 0.55);
+}
+
+/* Último sector (Financiero) — centrado en fila propia */
+.sss-card:last-child {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: calc(50% - clamp(6px, 0.7vh, 11px));
+}
+
+.sss-card-icon {
+  width: clamp(44px, 5.5vh, 92px);
+  height: clamp(44px, 5.5vh, 92px);
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.sss-card-nombre {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(14px, 2.2vw, 30px);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.96);
+  text-align: center;
+  line-height: 1.15;
+}
+
+/* Sobreescrituras de tipografía en contexto sss (+10% sobre valores globales) */
+.sss-hero .ac-eyebrow    { font-size: clamp(14px, 2.3vw, 25px); }
+.sss-heading .ac-title   { font-size: clamp(33px, 7.1vw, 84px); }
+.sss-heading .ac-subtitle { font-size: clamp(16px, 3.6vw, 33px); }
+
+/* Hint */
+.sss-hint {
+  text-align: center;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: clamp(12px, 1.3vw, 17px);
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.26);
+  flex-shrink: 0;
+}
+
+/* Footer con logos institucionales */
+.sss-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.sss-logo-group {
+  height: clamp(28px, 3.8vh, 61px);
+  width: auto;
+  object-fit: contain;
+}
+
+.sss-slogan {
+  height: clamp(23px, 3.2vh, 51px);
+  width: auto;
+  max-width: 58%;
+  object-fit: contain;
+}
+
+/* ── Onboarding / Misión Screen (ob) ────────────────────────
+   Misma estructura de anclaje que sss, reutiliza sss-topbar,
+   sss-logo-qqm, sss-footer y sus tamaños.
+   ─────────────────────────────────────────────────────────── */
+.ob-content {
+  position: relative;
+  z-index: 1;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(28px, 4vh, 64px) clamp(32px, 4.5vw, 80px) clamp(24px, 3.5vh, 56px);
+  width: 100%;
+  max-width: 1020px;
+  margin: 0 auto;
+}
+
+.ob-hero {
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Bloque central de misión */
+.ob-mission {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(12px, 1.4vh, 22px);
+  flex-shrink: 0;
+}
+
+/* Sobreescrituras de imágenes compartidas +25% respecto a sss */
+.ob-content .sss-logo-forum { height: clamp(50px, 6.4vh, 105px); }
+.ob-content .sss-logo-qqm   { width: clamp(126px, 15vh, 261px); height: clamp(126px, 15vh, 261px); }
+.ob-content .sss-logo-group  { height: clamp(35px, 4.8vh, 76px); }
+.ob-content .sss-slogan      { height: clamp(29px, 4vh, 64px); }
+
+.ob-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: clamp(41px, 8.9vw, 105px);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: #fff;
+  text-align: center;
+}
+
+/* Badge sector (pill con color del sector) */
+.ob-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--sector-color, rgba(255,255,255,0.2));
+  border-radius: 50px;
+  padding: clamp(8px, 1vh, 15px) clamp(20px, 3.1vw, 35px);
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(18px, 2.75vw, 35px);
+  font-weight: 600;
+  color: var(--sector-color, #fff);
+  letter-spacing: 0.4px;
+}
+
+/* Caja del reto con borde izquierdo en color sector */
+.ob-reto {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 4px solid var(--sector-color, #8DC63F);
+  border-radius: 14px;
+  padding: clamp(18px, 2.25vh, 35px) clamp(23px, 3.1vw, 43px);
+}
+
+.ob-reto-text {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(20px, 3.5vw, 45px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+  text-align: left;
+}
+
+/* Descripción */
+.ob-desc {
+  font-size: clamp(16px, 2.5vw, 33px);
+  color: rgba(255, 255, 255, 0.60);
+  text-align: center;
+  line-height: 1.7;
+}
+
+/* CTA principal */
+.ob-cta {
+  align-self: center;
+  width: auto;
+  min-width: clamp(240px, 55vw, 560px);
+  padding: clamp(20px, 2.75vh, 38px) clamp(32px, 6vw, 80px);
+  border: none;
+  border-radius: 50px;
+  background: var(--sector-color, #8DC63F);
+  color: #fff;
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(19px, 3vw, 40px);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.15s, filter 0.2s;
+  animation: ob-pulse 2.4s ease-in-out infinite;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ob-cta:active { transform: scale(0.97); }
+
+@keyframes ob-pulse {
+  0%, 100% { filter: brightness(1); }
+  50%       { filter: brightness(1.15) drop-shadow(0 0 14px rgba(255,255,255,0.25)); }
+}
+
+/* ── Playing view — logos encima del grafo ── */
+.play-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  padding: clamp(14px, 2vh, 28px) clamp(20px, 3vw, 44px) clamp(6px, 0.8vh, 12px);
+}
+
+.play-logo-forum {
+  height: clamp(30px, 4vh, 65px);
+  width: auto;
+  object-fit: contain;
+}
+
+.play-logo-qqm {
+  height: clamp(44px, 5.5vh, 90px);
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 14px rgba(141,198,63,0.22));
+}
+
+.play-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-shrink: 0;
+  margin-top: auto;
+  padding-top: clamp(8px, 1.2vh, 16px);
+}
+
+.play-logo-group {
+  height: clamp(22px, 3vh, 48px);
+  width: auto;
+  object-fit: contain;
+}
+
+.play-slogan {
+  height: clamp(18px, 2.5vh, 40px);
+  width: auto;
+  max-width: 55%;
+  object-fit: contain;
+}
+
+/* ── Debug: botón de pausa (temporal) ── */
+.debug-pause-btn {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: clamp(0.75rem, 1.5vw, 1.2rem);
+  line-height: 1;
+  padding: clamp(5px, 1vw, 8px) clamp(8px, 1.5vw, 14px);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
+}
+.debug-pause-btn:hover  { background: rgba(255,255,255,0.10); color: #fff; }
+.debug-pause-btn:active { transform: scale(0.94); }
