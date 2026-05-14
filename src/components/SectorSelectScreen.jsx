@@ -29,7 +29,10 @@ export default function SectorSelectScreen({ onSelect }) {
         {/* QQM hero logo */}
         <div className="sss-hero">
           <img src="/CORTES/LOGO_QQM.png" alt="Quién Quiere Trabajar en Equipo" className="sss-logo-qqm" />
-          <span className="ac-eyebrow">Espacio Inteligente · Reto</span>
+          <span className="ac-eyebrow sss-eyebrow-2l">
+            <span>Espacio Inteligente</span>
+            <span>Reto</span>
+          </span>
         </div>
 
         {/* Heading */}

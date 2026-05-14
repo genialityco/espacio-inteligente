@@ -83,11 +83,11 @@ export default function Graph({ selectedComponents = [], activeRoundNodes = [], 
         </pattern>
       </defs>
 
-      {/* ── Panel background (circular) ─────────────── */}
+      {/* ── Panel background (circular) — semi-transparent ── */}
       <circle cx={CX} cy={CY} r="390"
-        fill="rgba(2, 8, 18, 0.82)"
-        stroke="rgba(6,182,212,0.18)"
-        strokeWidth="1"
+        fill="rgba(2, 8, 18, 0.28)"
+        stroke="rgba(6,182,212,0.28)"
+        strokeWidth="1.5"
       />
       {/* Dot grid overlay */}
       <circle cx={CX} cy={CY} r="390" fill="url(#grid-dots)" />
@@ -107,8 +107,8 @@ export default function Graph({ selectedComponents = [], activeRoundNodes = [], 
             key={`spoke-${id}`}
             x1={CX} y1={CY} x2={cfg.x} y2={cfg.y}
             stroke={cfg.color}
-            strokeWidth={isSel ? "1.5" : "0.8"}
-            opacity={isSel ? 0.55 : 0.13}
+            strokeWidth={isSel ? "2.5" : "1.2"}
+            opacity={isSel ? 0.75 : 0.25}
           />
         );
       })}
@@ -123,7 +123,7 @@ export default function Graph({ selectedComponents = [], activeRoundNodes = [], 
             key={`syn-${i}`}
             x1={n1.x} y1={n1.y} x2={n2.x} y2={n2.y}
             stroke="url(#gold-gradient)"
-            strokeWidth="3"
+            strokeWidth="5"
             className="synergy-line"
             filter="url(#glow-synergy)"
           />
@@ -135,7 +135,7 @@ export default function Graph({ selectedComponents = [], activeRoundNodes = [], 
         const isSel   = selectedComponents.includes(id);
         const isActive = activeRoundNodes.includes(id);
         const fade    = showFade && !isActive && !isSel;
-        const r = isSel ? 26 : 20;
+        const r = isSel ? 42 : 32;
 
         return (
           <g
@@ -145,8 +145,8 @@ export default function Graph({ selectedComponents = [], activeRoundNodes = [], 
           >
             {/* Active-round pulse ring */}
             {isActive && (
-              <circle cx={cfg.x} cy={cfg.y} r={r + 18} fill="none" stroke={cfg.color} strokeWidth="1.5" opacity="0.5">
-                <animate attributeName="r"       values={`${r+12};${r+34};${r+12}`} dur="2.2s" repeatCount="indefinite" />
+              <circle cx={cfg.x} cy={cfg.y} r={r + 20} fill="none" stroke={cfg.color} strokeWidth="2" opacity="0.5">
+                <animate attributeName="r"       values={`${r+14};${r+40};${r+14}`} dur="2.2s" repeatCount="indefinite" />
                 <animate attributeName="opacity" values="0.5;0;0.5"                 dur="2.2s" repeatCount="indefinite" />
               </circle>
             )}
@@ -154,8 +154,8 @@ export default function Graph({ selectedComponents = [], activeRoundNodes = [], 
             {/* Glow halo (selected) */}
             {isSel && (
               <circle
-                cx={cfg.x} cy={cfg.y} r={r + 12}
-                fill={cfg.color} opacity="0.22"
+                cx={cfg.x} cy={cfg.y} r={r + 16}
+                fill={cfg.color} opacity="0.28"
                 filter="url(#glow-node)"
               />
             )}
@@ -163,24 +163,24 @@ export default function Graph({ selectedComponents = [], activeRoundNodes = [], 
             {/* Node body */}
             <circle
               cx={cfg.x} cy={cfg.y} r={r}
-              fill={isSel ? `url(#ng-${id})` : "rgba(6,14,24,0.88)"}
+              fill={isSel ? `url(#ng-${id})` : "rgba(6,14,24,0.72)"}
               stroke={cfg.color}
-              strokeWidth={isSel ? "2" : "1.25"}
-              strokeOpacity={isSel ? "1" : "0.42"}
+              strokeWidth={isSel ? "2.5" : "1.75"}
+              strokeOpacity={isSel ? "1" : "0.55"}
               className="node-circle"
             />
 
             {/* Inner core dot (selected) */}
             {isSel && (
-              <circle cx={cfg.x} cy={cfg.y} r="5" fill="rgba(255,255,255,0.9)" />
+              <circle cx={cfg.x} cy={cfg.y} r="6" fill="rgba(255,255,255,0.9)" />
             )}
 
             {/* Label */}
             <text
-              x={cfg.x} y={cfg.y + 44}
+              x={cfg.x} y={cfg.y + r + 18}
               className="node-text"
-              opacity={fade ? 0.18 : isSel ? 1 : 0.52}
-              style={{ fontSize: isSel ? '13px' : '11px' }}
+              opacity={fade ? 0.18 : isSel ? 1 : 0.65}
+              style={{ fontSize: isSel ? '19px' : '17px' }}
             >
               {cfg.label}
             </text>
@@ -191,28 +191,28 @@ export default function Graph({ selectedComponents = [], activeRoundNodes = [], 
       {/* ── Central hub ─────────────────────────────── */}
       <g className={`node-group${showFade && activeRoundNodes.length === 0 ? ' fade-out' : ''}`}>
         {/* Slow-rotating dashed ring */}
-        <circle cx={CX} cy={CY} r="52" fill="none" stroke="rgba(6,182,212,0.32)" strokeWidth="1" strokeDasharray="5 5">
+        <circle cx={CX} cy={CY} r="77" fill="none" stroke="rgba(6,182,212,0.38)" strokeWidth="1.5" strokeDasharray="6 6">
           <animateTransform attributeName="transform" type="rotate" from="0 400 400" to="360 400 400" dur="22s" repeatCount="indefinite" />
         </circle>
         {/* Counter-rotating fine ring */}
-        <circle cx={CX} cy={CY} r="44" fill="none" stroke="rgba(6,182,212,0.14)" strokeWidth="0.75" strokeDasharray="2 8">
+        <circle cx={CX} cy={CY} r="65" fill="none" stroke="rgba(6,182,212,0.18)" strokeWidth="1" strokeDasharray="2 9">
           <animateTransform attributeName="transform" type="rotate" from="360 400 400" to="0 400 400" dur="34s" repeatCount="indefinite" />
         </circle>
         {/* Ambient glow disc */}
-        <circle cx={CX} cy={CY} r="36" fill="rgba(6,182,212,0.14)" filter="url(#glow-hub)" />
+        <circle cx={CX} cy={CY} r="53" fill="rgba(6,182,212,0.18)" filter="url(#glow-hub)" />
         {/* Core body */}
-        <circle cx={CX} cy={CY} r="30" fill="rgba(2,10,18,0.93)" stroke="rgba(6,182,212,0.7)" strokeWidth="1.5" />
+        <circle cx={CX} cy={CY} r="43" fill="rgba(2,10,18,0.88)" stroke="rgba(6,182,212,0.8)" strokeWidth="2" />
         {/* Center pulsing dot */}
-        <circle cx={CX} cy={CY} r="7" fill="#06b6d4" opacity="0.9">
-          <animate attributeName="r"       values="7;9;7"       dur="2.8s" repeatCount="indefinite" />
+        <circle cx={CX} cy={CY} r="11" fill="#06b6d4" opacity="0.9">
+          <animate attributeName="r"       values="11;14;11"    dur="2.8s" repeatCount="indefinite" />
           <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2.8s" repeatCount="indefinite" />
         </circle>
         {/* Label */}
         <text
-          x={CX} y={CY + 60}
+          x={CX} y={CY + 84}
           textAnchor="middle"
-          fill="rgba(6,182,212,0.55)"
-          style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '10px', letterSpacing: '3px' }}
+          fill="rgba(6,182,212,0.65)"
+          style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '14px', letterSpacing: '3px' }}
         >
           OG CORE
         </text>

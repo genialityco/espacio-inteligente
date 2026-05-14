@@ -20,7 +20,7 @@
           },
           {
             "texto": "Cada área compra lo que necesita",
-            "tipo": "suboptima",
+            "tipo": "incorrecta",
             "componentes": ["equipos_computo"],
             "riesgo_oculto": "ineficiencia_operativa",
             "impacto": "Esto genera costos invisibles"
@@ -34,7 +34,7 @@
           },
           {
             "texto": "Implementamos política BYOD con control básico de acceso",
-            "tipo": "suboptima",
+            "tipo": "incorrecta",
             "componentes": ["equipos_computo"],
             "riesgo_oculto": "vulnerabilidad_ciberseguridad",
             "impacto": "Control parcial: deja brechas de seguridad en dispositivos personales"
@@ -53,7 +53,7 @@
           },
           {
             "texto": "Usamos varias apps según el caso",
-            "tipo": "suboptima",
+            "tipo": "incorrecta",
             "componentes": ["software_colaboracion"],
             "riesgo_oculto": "ineficiencia_operativa",
             "impacto": "Múltiples silos rompen la productividad"
@@ -67,7 +67,7 @@
           },
           {
             "texto": "Adoptamos la plataforma sin formación ni onboarding al equipo",
-            "tipo": "suboptima",
+            "tipo": "incorrecta",
             "componentes": ["software_colaboracion"],
             "riesgo_oculto": "ineficiencia_operativa",
             "impacto": "La herramienta existe pero el equipo no la usa — inversión sin retorno"
@@ -86,7 +86,7 @@
           },
           {
             "texto": "Confiamos en contraseñas y antivirus",
-            "tipo": "suboptima",
+            "tipo": "incorrecta",
             "componentes": [],
             "riesgo_oculto": "vulnerabilidad_ciberseguridad",
             "impacto": "Protección insuficiente. Falsa seguridad."
@@ -100,7 +100,7 @@
           },
           {
             "texto": "Ciframos el disco pero sin gestión centralizada del dispositivo",
-            "tipo": "suboptima",
+            "tipo": "incorrecta",
             "componentes": [],
             "riesgo_oculto": "vulnerabilidad_ciberseguridad",
             "impacto": "El cifrado ayuda, pero sin borrado remoto la información sigue expuesta"
@@ -119,7 +119,7 @@
           },
           {
             "texto": "Recuperamos manualmente con respaldos parciales",
-            "tipo": "suboptima",
+            "tipo": "incorrecta",
             "componentes": ["backup"],
             "riesgo_oculto": "ineficiencia_operativa",
             "impacto": "La recuperación genera parálisis temporal"
@@ -133,7 +133,7 @@
           },
           {
             "texto": "Migramos a la nube sin validar el plan de recuperación",
-            "tipo": "suboptima",
+            "tipo": "incorrecta",
             "componentes": ["backup"],
             "riesgo_oculto": "ineficiencia_operativa",
             "impacto": "La nube no garantiza recuperación si el plan nunca fue probado en producción"
@@ -152,7 +152,7 @@
           },
           {
             "texto": "Llamamos soporte cuando algo falla",
-            "tipo": "suboptima",
+            "tipo": "incorrecta",
             "componentes": ["soporte_servicios"],
             "riesgo_oculto": "ineficiencia_operativa",
             "impacto": "El modo reactivo cuesta horas operativas"
@@ -166,7 +166,7 @@
           },
           {
             "texto": "Externalizamos soporte sin SLA ni indicadores de desempeño",
-            "tipo": "suboptima",
+            "tipo": "incorrecta",
             "componentes": [],
             "riesgo_oculto": "ineficiencia_operativa",
             "impacto": "Soporte externo sin compromisos medibles — las fallas siguen sin control"
@@ -185,7 +185,7 @@
           },
           {
             "texto": "Seguimos comprando equipos según necesidad",
-            "tipo": "suboptima",
+            "tipo": "incorrecta",
             "componentes": [],
             "riesgo_oculto": "fragmentacion_tecnologica",
             "impacto": "Costos de capital no planificados"
@@ -199,7 +199,7 @@
           },
           {
             "texto": "Adoptamos SaaS sin integrar con los sistemas actuales",
-            "tipo": "suboptima",
+            "tipo": "incorrecta",
             "componentes": [],
             "riesgo_oculto": "fragmentacion_tecnologica",
             "impacto": "Nuevas herramientas aisladas — deuda tecnológica que crece con el negocio"
