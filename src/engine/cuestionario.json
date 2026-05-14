@@ -1,0 +1,456 @@
+{
+  "preguntas_todas_correctas": {
+    "descripcion": "Todas las respuestas son válidas — revelan el estado tecnológico actual de la empresa.",
+    "preguntas": [
+      {
+        "id": 1,
+        "pregunta": "¿Bajo qué modalidad adquieren los equipos de cómputo actualmente?",
+        "opciones": [
+          {
+            "texto": "Compra (CAPEX)",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo"],
+            "impacto": "Adquisición CAPEX: esquema rígido que compromete el flujo de caja y limita la renovación tecnológica"
+          },
+          {
+            "texto": "Renta",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo"],
+            "impacto": "Renta de equipos: modelo de transición con mayor flexibilidad que la compra directa"
+          },
+          {
+            "texto": "Leasing (OPEX)",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo"],
+            "impacto": "Leasing OPEX: modelo moderno que preserva el flujo de caja y facilita la renovación"
+          },
+          {
+            "texto": "DaaS (Dispositivo como Servicio)",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo", "modelo_daas"],
+            "impacto": "DaaS: el esquema más avanzado — hardware, soporte y gestión integral incluida"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "pregunta": "¿Cómo trabajan tus colaboradores actualmente?",
+        "opciones": [
+          {
+            "texto": "Híbrida",
+            "tipo": "correcta",
+            "componentes": ["software_colaboracion", "perifericos_colaboracion"],
+            "impacto": "Modalidad híbrida: flexibilidad que impulsa la productividad — requiere infraestructura robusta en todos los entornos"
+          },
+          {
+            "texto": "Remota",
+            "tipo": "correcta",
+            "componentes": ["software_colaboracion"],
+            "impacto": "Trabajo remoto: modelo ágil que exige seguridad y continuidad garantizada en cada dispositivo"
+          },
+          {
+            "texto": "Presencial",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo", "mobiliario"],
+            "impacto": "Modalidad presencial: importante garantizar equipos estandarizados y soporte ágil en las instalaciones"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "pregunta": "¿Cómo se reportan y se resuelven los casos de soporte en tu compañía?",
+        "opciones": [
+          {
+            "texto": "Tenemos una herramienta donde se reportan y miden los casos",
+            "tipo": "correcta",
+            "componentes": ["soporte_servicios"],
+            "impacto": "Soporte con herramienta: trazabilidad completa y medición de tiempos — base para mejora continua"
+          },
+          {
+            "texto": "Los casos se reportan, pero no se miden los tiempos de solución",
+            "tipo": "correcta",
+            "componentes": ["soporte_servicios"],
+            "impacto": "Soporte sin métricas: oportunidad de medir y optimizar los tiempos de atención para reducir impacto"
+          },
+          {
+            "texto": "Se gestionan por medio de una línea telefónica",
+            "tipo": "correcta",
+            "componentes": ["soporte_servicios"],
+            "impacto": "Soporte por teléfono: sin trazabilidad ni métricas — los tiempos de resolución no se controlan"
+          },
+          {
+            "texto": "Somos reactivos — atendemos cuando se presenta el problema",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo"],
+            "impacto": "Soporte reactivo: las fallas impactan la operación antes de ser atendidas, generando costos ocultos"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "pregunta": "¿Tus equipos de cómputo están preparados para procesos de Inteligencia Artificial?",
+        "opciones": [
+          {
+            "texto": "Sí, tenemos equipos con capacidades de IA",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo", "software_colaboracion"],
+            "impacto": "Equipos listos para IA: posicionados para aprovechar herramientas de productividad de siguiente generación"
+          },
+          {
+            "texto": "No, nuestros equipos no tienen esas capacidades",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo"],
+            "impacto": "Sin capacidad para IA: riesgo de quedar rezagados en la transformación digital y la productividad"
+          },
+          {
+            "texto": "No consideramos que necesitamos IA en este momento",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo"],
+            "impacto": "Sin estrategia de IA: la productividad puede verse limitada frente a competidores que sí la adopten"
+          },
+          {
+            "texto": "Es un reto pendiente en nuestro proceso de renovación tecnológica",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo"],
+            "impacto": "IA como reto de renovación: momento ideal para planificar equipos con capacidades para el futuro"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "pregunta": "¿Cuál es el procedimiento cuando un equipo de cómputo falla o no se puede resolver en primer nivel?",
+        "opciones": [
+          {
+            "texto": "Abrimos garantía del equipo y esperamos la reparación",
+            "tipo": "correcta",
+            "componentes": ["backup"],
+            "impacto": "Dependencia de garantías: el tiempo de reparación paraliza al usuario y genera costos ocultos"
+          },
+          {
+            "texto": "Llamamos a nuestro proveedor de servicios al siguiente día hábil",
+            "tipo": "correcta",
+            "componentes": ["soporte_servicios"],
+            "impacto": "Soporte al día siguiente: cada hora sin equipo representa pérdida directa de productividad"
+          },
+          {
+            "texto": "Contamos con equipos de continuidad operativa disponibles",
+            "tipo": "correcta",
+            "componentes": ["backup", "soporte_servicios"],
+            "impacto": "Continuidad operativa garantizada: equipos de respaldo para minimizar el tiempo de inactividad"
+          },
+          {
+            "texto": "Solicitamos cotización de soporte y revisión a un proveedor externo",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo"],
+            "impacto": "Soporte no planificado: costos imprevistos y tiempos de respuesta inciertos ante cada falla"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "pregunta": "¿Tienen visibilidad clara del estado de sus dispositivos o se enteran cuando se presentan los problemas?",
+        "opciones": [
+          {
+            "texto": "Sí, tenemos una herramienta de inventarios y monitoreo",
+            "tipo": "correcta",
+            "componentes": ["seguridad_endpoint"],
+            "impacto": "Inventario centralizado: visibilidad proactiva de la flota para gestión anticipada de riesgos"
+          },
+          {
+            "texto": "No — somos reactivos porque no tenemos centralizada la información de los equipos",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo"],
+            "impacto": "Sin visibilidad de dispositivos: riesgos de seguridad y fallas no detectadas hasta que ya impactan"
+          },
+          {
+            "texto": "Los usuarios nos llaman cada vez que tienen una falla en sus equipos",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo"],
+            "impacto": "Gestión reactiva: el impacto en productividad ya ocurrió cuando se detecta la falla"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "pregunta": "¿Los equipos que usan actualmente son equipos corporativos de marca reconocida?",
+        "opciones": [
+          {
+            "texto": "No, compramos los equipos más económicos disponibles",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo"],
+            "impacto": "Equipos no corporativos: mayor frecuencia de fallas, soporte limitado y menor garantía de rendimiento"
+          },
+          {
+            "texto": "Sí, garantizamos confiabilidad y rendimiento corporativo",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo", "soporte_servicios"],
+            "impacto": "Equipos corporativos: rendimiento garantizado, soporte especializado y ciclo de vida gestionable"
+          },
+          {
+            "texto": "Tenemos un parque mixto — parte corporativo, parte económico",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo"],
+            "impacto": "Parque mixto: la heterogeneidad dificulta el soporte centralizado y la gestión uniforme"
+          },
+          {
+            "texto": "La decisión de compra la toma el área de compras sin criterio técnico",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo"],
+            "impacto": "Compras sin alineación TI: oportunidad de integrar criterios tecnológicos en la adquisición"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "pregunta": "¿Cuántos dispositivos de cómputo tiene tu compañía actualmente?",
+        "opciones": [
+          {
+            "texto": "1 a 50 dispositivos",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo"],
+            "impacto": "Empresa pequeña: soluciones escalables ideales para crecer sin sobre-invertir desde el inicio"
+          },
+          {
+            "texto": "50 a 100 dispositivos",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo"],
+            "impacto": "Empresa mediana: momento ideal para estandarizar la gestión y el soporte de dispositivos"
+          },
+          {
+            "texto": "100 a 200 dispositivos",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo"],
+            "impacto": "Flota significativa: la gestión centralizada genera ahorros operativos tangibles a esta escala"
+          },
+          {
+            "texto": "200 a 500 dispositivos",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo"],
+            "impacto": "Gran flota: el soporte proactivo reduce costos ocultos y tiempo de inactividad a gran escala"
+          },
+          {
+            "texto": "Más de 500 dispositivos",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo", "modelo_daas"],
+            "impacto": "Flota enterprise: máximo potencial de ahorro y eficiencia con gestión inteligente de dispositivos"
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "pregunta": "¿Cuáles son los principales retos tecnológicos de tu organización para este año?",
+        "opciones": [
+          {
+            "texto": "Mejorar la productividad de mis colaboradores",
+            "tipo": "correcta",
+            "componentes": ["software_colaboracion"],
+            "impacto": "Foco en productividad: alineado con soluciones que optimizan el rendimiento de tu equipo"
+          },
+          {
+            "texto": "Mejorar los tiempos de servicio para usuarios finales",
+            "tipo": "correcta",
+            "componentes": ["soporte_servicios"],
+            "impacto": "Mejora en tiempos de servicio: el soporte proactivo y los equipos corporativos son la clave"
+          },
+          {
+            "texto": "Optimizar costos tecnológicos con presupuesto reducido",
+            "tipo": "correcta",
+            "componentes": ["modelo_daas"],
+            "impacto": "Optimización de costos: DaaS y OPEX eliminan costos ocultos que no ves en la adquisición tradicional"
+          },
+          {
+            "texto": "Contar con equipos que tengan capacidades para Inteligencia Artificial",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo"],
+            "impacto": "Equipos con IA: decisión estratégica para mantenerse competitivo en la transformación digital"
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "pregunta": "¿Qué factores consideran más importantes al momento de elegir un proveedor tecnológico?",
+        "opciones": [
+          {
+            "texto": "El esquema de soporte que brinda el proveedor",
+            "tipo": "correcta",
+            "componentes": ["soporte_servicios"],
+            "impacto": "Soporte como criterio clave: decisión que garantiza continuidad operativa ante cualquier falla"
+          },
+          {
+            "texto": "Los tiempos de entrega de los dispositivos",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo"],
+            "impacto": "Tiempo de entrega: factor crítico para mantener operativas a tus personas sin demoras"
+          },
+          {
+            "texto": "La experiencia y trayectoria del proveedor",
+            "tipo": "correcta",
+            "componentes": ["soporte_servicios"],
+            "impacto": "Experiencia del proveedor: garantía de conocimiento técnico y soporte especializado probado"
+          },
+          {
+            "texto": "El precio como factor principal",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo"],
+            "impacto": "Foco en precio: importante equilibrar el costo inicial con el Costo Total de Propiedad (TCO)"
+          },
+          {
+            "texto": "Otros factores propios de nuestra organización",
+            "tipo": "correcta",
+            "componentes": ["equipos_computo"],
+            "impacto": "Criterios propios: cada empresa tiene necesidades únicas — Open Group las evalúa contigo"
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "pregunta": "¿Han enfrentado problemas de seguridad o pérdida de datos por equipos obsoletos, mal gestionados o desactualizados?",
+        "opciones": [
+          {
+            "texto": "Sí, hemos tenido incidentes de seguridad relacionados con equipos",
+            "tipo": "correcta",
+            "componentes": ["seguridad_endpoint"],
+            "impacto": "Incidentes de seguridad previos: señal clara de que se requiere gestión activa y monitoreo continuo"
+          },
+          {
+            "texto": "No, no hemos tenido problemas de seguridad en dispositivos",
+            "tipo": "correcta",
+            "componentes": ["seguridad_endpoint"],
+            "impacto": "Sin incidentes de seguridad: buenas prácticas que vale la pena fortalecer con gestión proactiva"
+          }
+        ]
+      }
+    ]
+  },
+  "preguntas_unica_correcta": {
+    "descripcion": "Una única respuesta correcta — activa componentes del ecosistema solo si se acierta.",
+    "preguntas": [
+      {
+        "id": 16,
+        "pregunta": "¿Qué es ABSOLUTE?",
+        "opciones": [
+          {
+            "texto": "Una marca de vodka premium",
+            "tipo": "incorrecta",
+            "componentes": [],
+            "impacto": "Absolute es una solución de seguridad y gestión de dispositivos con persistencia en firmware — protege tu flota incluso sin conexión"
+          },
+          {
+            "texto": "Una solución exclusiva de Ciberseguridad de red",
+            "tipo": "incorrecta",
+            "componentes": [],
+            "impacto": "Absolute va más allá de la red: gestiona y protege dispositivos de forma remota y persistente, incluso si se reinstala el sistema operativo"
+          },
+          {
+            "texto": "Un Software especializado para gestionar Servidores",
+            "tipo": "incorrecta",
+            "componentes": [],
+            "impacto": "Absolute protege endpoints, no servidores — gestión remota de laptops y dispositivos corporativos con persistencia en firmware"
+          },
+          {
+            "texto": "Una solución de seguridad y gestión de dispositivos con persistencia en firmware",
+            "tipo": "correcta",
+            "componentes": ["seguridad_endpoint"],
+            "impacto": "¡Correcto! Absolute protege y gestiona toda tu flota de forma remota, incluso en dispositivos robados o sin conexión"
+          }
+        ]
+      },
+      {
+        "id": 17,
+        "pregunta": "¿Qué es Tech Direct?",
+        "opciones": [
+          {
+            "texto": "Solo un aplicativo para mejorar el nivel de servicio",
+            "tipo": "incorrecta",
+            "componentes": [],
+            "impacto": "TechDirect es mucho más: plataforma todo-en-uno con IA que centraliza tu flota, monitorea proactivamente y optimiza garantías"
+          },
+          {
+            "texto": "Solo una solución con IA que monitorea dispositivos proactivamente",
+            "tipo": "incorrecta",
+            "componentes": [],
+            "impacto": "TechDirect también centraliza la gestión de flota, gestiona garantías y genera alertas — es una plataforma integral"
+          },
+          {
+            "texto": "Solo una herramienta para centralizar la gestión de tu flota",
+            "tipo": "incorrecta",
+            "componentes": [],
+            "impacto": "TechDirect incluye además IA proactiva, gestión de garantías y alertas en tiempo real — Open Group la gestiona por ti"
+          },
+          {
+            "texto": "Solo un software que genera alertas y mejora garantías",
+            "tipo": "incorrecta",
+            "componentes": [],
+            "impacto": "TechDirect va más allá de las alertas: centraliza tu flota completa con monitoreo IA y soporte proactivo integrado"
+          },
+          {
+            "texto": "Todas las anteriores — es una plataforma integral de gestión",
+            "tipo": "correcta",
+            "componentes": ["soporte_servicios", "seguridad_endpoint"],
+            "impacto": "¡Correcto! TechDirect es la plataforma integral que centraliza, monitorea, alerta y gestiona garantías de toda tu flota"
+          }
+        ]
+      },
+      {
+        "id": 18,
+        "pregunta": "¿Qué es un costo oculto en tecnología?",
+        "opciones": [
+          {
+            "texto": "Solo un gasto imprevisto en el presupuesto de TI",
+            "tipo": "incorrecta",
+            "componentes": [],
+            "impacto": "Un costo oculto también incluye pérdida de productividad y tiempos extendidos de soporte — Open Group los identifica y elimina"
+          },
+          {
+            "texto": "Solo un costo que impacta la productividad de la compañía",
+            "tipo": "incorrecta",
+            "componentes": [],
+            "impacto": "Los costos ocultos son más amplios: gastos imprevistos + impacto en productividad + tiempos extendidos de resolución"
+          },
+          {
+            "texto": "Solo el incremento en tiempos de solución que afectan a los usuarios",
+            "tipo": "incorrecta",
+            "componentes": [],
+            "impacto": "Los costos ocultos también incluyen gastos imprevistos e impacto directo en productividad — no solo tiempos de soporte"
+          },
+          {
+            "texto": "Todos los anteriores — son múltiples impactos que no se presupuestan",
+            "tipo": "correcta",
+            "componentes": ["soporte_servicios"],
+            "impacto": "¡Correcto! Costos ocultos = gastos imprevistos + pérdida de productividad + tiempos extendidos. Open Group los elimina con gestión proactiva"
+          }
+        ]
+      },
+      {
+        "id": 19,
+        "pregunta": "¿Qué significa la sigla DaaS?",
+        "opciones": [
+          {
+            "texto": "Dispositivo sin Soporte Activo",
+            "tipo": "incorrecta",
+            "componentes": [],
+            "impacto": "DaaS significa Dispositivo como Servicio — modelo OPEX que incluye hardware, soporte y renovación tecnológica sin inversión inicial"
+          },
+          {
+            "texto": "Desktop y Aplicaciones en la nube como Servicio",
+            "tipo": "incorrecta",
+            "componentes": [],
+            "impacto": "DaaS = Dispositivo como Servicio: el equipo, el soporte y la renovación van incluidos — Open Group lo gestiona todo por ti"
+          },
+          {
+            "texto": "Dispositivo como Servicio",
+            "tipo": "correcta",
+            "componentes": ["modelo_daas"],
+            "impacto": "¡Correcto! DaaS (Dispositivo como Servicio) es el modelo OPEX que incluye hardware, soporte y renovación — sin CAPEX"
+          },
+          {
+            "texto": "Ninguna de las anteriores",
+            "tipo": "incorrecta",
+            "componentes": [],
+            "impacto": "DaaS sí tiene significado: Dispositivo como Servicio — modelo que elimina el CAPEX y garantiza tecnología siempre actualizada"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -71,7 +71,7 @@ export default function PlayingScreen({
               ))}
             </div>
             <span className="scenario-label">
-              Escenario {roundIdx + 1} / {rondas.length}
+              Pregunta {roundIdx + 1} / {rondas.length}
               {sector && <span className="round-sector-badge">{SECTORES[sector].emoji}</span>}
             </span>
           </div>

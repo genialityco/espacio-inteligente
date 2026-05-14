@@ -1,8 +1,8 @@
 import { useState, useEffect, useMemo, useRef } from "react";
 import { ref, set, update } from "firebase/database";
 import ecosistemaData from "./data/ecosistema_inteligente.json";
-import { SECTORES } from "./data/sectores.js";
 import { evaluarEcosistema } from "./engine/index.js";
+import { seleccionarPreguntas } from "./engine/cuestionario.js";
 import IdleScreen from "./components/IdleScreen";
 import RegisterScreen from "./components/RegisterScreen";
 import SectorSelectScreen from "./components/SectorSelectScreen";
@@ -27,61 +27,63 @@ function pickEliminatedIndices(opciones, correctIdx) {
   return bad.slice(0, 2);
 }
 
+// Convierte una pregunta del cuestionario al formato que PlayingScreen espera.
+// Las opciones ya tienen tipo/componentes/impacto en el JSON, así que es un mapeo directo.
+function preguntaToRonda(pregunta) {
+  if (!pregunta) return null;
+  return {
+    escenario: pregunta.pregunta,
+    opciones: pregunta.opciones.map((opt) => ({
+      texto: opt.texto,
+      tipo: opt.tipo,           // 'correcta' | 'incorrecta'
+      componentes: opt.componentes ?? [],
+      impacto: opt.impacto,
+    })),
+  };
+}
+
 export default function App() {
   const [view, setView] = useState("idle"); // idle · register · sector-select · onboarding · playing · wow · result
   const [sector, setSector] = useState(null);
   const [roundIdx, setRoundIdx] = useState(0);
   const [selectedComponents, setSelectedComponents] = useState([]);
   const [timeLeft, setTimeLeft] = useState(15.0);
-  const [feedback, setFeedback] = useState(null); // { text, type: 'positive'|'warning'|'negative' }
+  const [feedback, setFeedback] = useState(null); // { text, type: 'positive'|'negative' }
   const [usedFiftyFifty, setUsedFiftyFifty] = useState(false);
   const [usedAdvisor, setUsedAdvisor] = useState(false);
   const [hiddenOptions, setHiddenOptions] = useState([]);
   const [advisorActive, setAdvisorActive] = useState(false);
   const [paused, setPaused] = useState(false);
+  const [cuestionarioPreguntas, setCuestionarioPreguntas] = useState([]);
+  const [scoreModifier, setScoreModifier] = useState(0);
   const sessionIdRef = useRef(generateSessionId());
+  const adjustedEngineResultRef = useRef(null);
 
-  const rondas = ecosistemaData.simulacion.rondas;
+  const currentRound = preguntaToRonda(cuestionarioPreguntas[roundIdx]);
 
-  const currentRound = (() => {
-    const base = rondas[roundIdx];
-    if (!sector) return base;
-    const sr = SECTORES[sector].rondas[roundIdx];
-    return {
-      ...base,
-      escenario: sr.escenario,
-      opciones: base.opciones.map((opt, i) => ({
-        ...opt,
-        texto: sr.opciones[i].texto,
-        impacto: sr.opciones[i].impacto,
-      })),
-    };
-  })();
-
+  // Score en vivo: el motor evalúa los componentes seleccionados hasta el momento.
   const engineResult = useMemo(
     () => evaluarEcosistema(selectedComponents, ecosistemaData),
     [selectedComponents],
   );
 
-  useEffect(() => {
-    if (view !== "playing" || feedback !== null || paused) return;
-    const interval = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev <= 0.1) {
-          handleTimeout();
-          return 0;
-        }
-        return prev - 0.1;
-      });
-    }, 100);
-    return () => clearInterval(interval);
-  }, [view, feedback]);
+  // Penalización por respuestas incorrectas en preguntas de conocimiento (unica_correcta).
+  const adjustedEngineResult = useMemo(() => {
+    if (scoreModifier === 0) return engineResult;
+    const adj = Math.max(0, Math.min(100, engineResult.score_global + scoreModifier));
+    return { ...engineResult, score_global: adj };
+  }, [engineResult, scoreModifier]);
 
-  const handleTimeout = () => {
-    const bad =
-      currentRound.opciones.find((o) => o.tipo === "incorrecta") ??
-      currentRound.opciones[2];
-    handleOptionSelect(bad);
+  const finishGame = () => {
+    const result = adjustedEngineResultRef.current ?? adjustedEngineResult;
+    update(ref(db, `espacio-inteligente/sessions/${sessionIdRef.current}`), {
+      sector,
+      score: result.score_global,
+      estado: result.estado,
+      completedAt: Date.now(),
+    }).catch(() => {});
+
+    setView(result.score_global > 85 ? "wow" : "result");
   };
 
   const handleOptionSelect = (option) => {
@@ -90,6 +92,10 @@ export default function App() {
         ...new Set([...prev, ...option.componentes]),
       ]);
     }
+    // Penalizar respuestas incorrectas en preguntas de conocimiento.
+    if (cuestionarioPreguntas[roundIdx]?.tipo === "unica_correcta" && option.tipo === "incorrecta") {
+      setScoreModifier((prev) => prev - 15);
+    }
     const fbType = option.tipo === "correcta" ? "positive" : "negative";
     setFeedback({ text: option.impacto, type: fbType });
 
@@ -97,7 +103,7 @@ export default function App() {
       setFeedback(null);
       setHiddenOptions([]);
       setAdvisorActive(false);
-      if (roundIdx < rondas.length - 1) {
+      if (roundIdx < cuestionarioPreguntas.length - 1) {
         setRoundIdx((r) => r + 1);
         setTimeLeft(15.0);
       } else {
@@ -106,16 +112,32 @@ export default function App() {
     }, 3000);
   };
 
-  const finishGame = () => {
-    update(ref(db, `espacio-inteligente/sessions/${sessionIdRef.current}`), {
-      sector,
-      score: engineResult.score_global,
-      estado: engineResult.estado,
-      completedAt: Date.now(),
-    }).catch(() => {});
+  const handleTimeoutRef = useRef(null);
 
-    setView("wow");
-  };
+  // Sin deps: mantiene los refs actualizados tras cada render para evitar closures stale.
+  useEffect(() => {
+    adjustedEngineResultRef.current = adjustedEngineResult;
+    handleTimeoutRef.current = () => {
+      const bad =
+        currentRound?.opciones.find((o) => o.tipo === "incorrecta") ??
+        currentRound?.opciones[0];
+      if (bad) handleOptionSelect(bad);
+    };
+  });
+
+  useEffect(() => {
+    if (view !== "playing" || feedback !== null || paused) return;
+    const interval = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 0.1) {
+          handleTimeoutRef.current?.();
+          return 0;
+        }
+        return prev - 0.1;
+      });
+    }, 100);
+    return () => clearInterval(interval);
+  }, [view, feedback, paused]);
 
   const handleRegister = ({ nombre, empresa, rol, tamano }) => {
     sessionIdRef.current = generateSessionId();
@@ -133,8 +155,10 @@ export default function App() {
     setView("idle");
     setSector(null);
     setSelectedComponents([]);
+    setCuestionarioPreguntas([]);
     setRoundIdx(0);
     setTimeLeft(15.0);
+    setScoreModifier(0);
     setUsedFiftyFifty(false);
     setUsedAdvisor(false);
     setHiddenOptions([]);
@@ -144,9 +168,9 @@ export default function App() {
 
   const handleFiftyFifty = () => {
     if (usedFiftyFifty || feedback !== null) return;
-    const correctIdx = currentRound.opciones.findIndex(
-      (o) => o.tipo === "correcta",
-    );
+    // 50/50 solo aplica cuando hay opciones incorrectas (preguntas unica_correcta).
+    if (!currentRound?.opciones.some((o) => o.tipo === "incorrecta")) return;
+    const correctIdx = currentRound.opciones.findIndex((o) => o.tipo === "correcta");
     setHiddenOptions(pickEliminatedIndices(currentRound.opciones, correctIdx));
     setUsedFiftyFifty(true);
   };
@@ -180,6 +204,9 @@ export default function App() {
       <OnboardingScreen
         sector={sector}
         onStart={() => {
+          setCuestionarioPreguntas(seleccionarPreguntas());
+          setSelectedComponents([]);
+          setRoundIdx(0);
           setView("playing");
           setTimeLeft(15.0);
         }}
@@ -188,7 +215,7 @@ export default function App() {
   } else if (view === "wow") {
     content = (
       <WowScreen
-        engineResult={engineResult}
+        engineResult={adjustedEngineResult}
         selectedComponents={selectedComponents}
         sector={sector}
         onContinue={() => setView("result")}
@@ -197,7 +224,7 @@ export default function App() {
   } else if (view === "result") {
     content = (
       <ResultScreen
-        engineResult={engineResult}
+        engineResult={adjustedEngineResult}
         selectedComponents={selectedComponents}
         sector={sector}
         onRestart={handleRestart}
@@ -210,10 +237,10 @@ export default function App() {
         timeLeft={timeLeft}
         currentRound={currentRound}
         roundIdx={roundIdx}
-        rondas={rondas}
+        rondas={cuestionarioPreguntas}
         sector={sector}
         selectedComponents={selectedComponents}
-        engineResult={engineResult}
+        engineResult={adjustedEngineResult}
         hiddenOptions={hiddenOptions}
         usedFiftyFifty={usedFiftyFifty}
         usedAdvisor={usedAdvisor}
