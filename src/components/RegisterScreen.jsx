@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import QRScanner from './QRScanner';
 
 const ROLES = ['CEO / Dirección', 'CIO / CTO', 'IT Manager', 'Operaciones', 'Innovación', 'Otro'];
 const SIZES = ['1–10', '11–50', '51–200', '201–1000', '1000+'];
@@ -14,7 +13,6 @@ export default function RegisterScreen({ onRegister }) {
   const [empresa,   setEmpresa]   = useState('');
   const [rol,       setRol]       = useState('');
   const [tamano,    setTamano]    = useState('');
-  const [showQR,    setShowQR]    = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [liveCount, setLiveCount] = useState(142);
 
@@ -26,13 +24,6 @@ export default function RegisterScreen({ onRegister }) {
     }, 2400);
     return () => clearInterval(id);
   }, []);
-
-  const handleQRResult = ({ nombre: n, raw }) => {
-    setNombre(n);
-    if (raw.empresa) setEmpresa(raw.empresa);
-    if (raw.rol)     setRol(raw.rol);
-    setShowQR(false);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -67,8 +58,8 @@ export default function RegisterScreen({ onRegister }) {
         <section className="ac-card">
           <div className="ac-card-head">
             <span className="ac-eyebrow">Espacio Inteligente · Reto</span>
-            <h1 className="ac-title">Activa tu <span className="title-glow">acceso</span></h1>
-            <p className="ac-subtitle">Identifícate para entrar al simulador y descubrir el nivel de inteligencia de tu ecosistema tecnológico.</p>
+            <h1 className="ac-title">Active su <span className="title-glow">acceso</span></h1>
+            <p className="ac-subtitle">Identifíquese para entrar al simulador y descubrir el nivel de inteligencia de su ecosistema tecnológico.</p>
           </div>
 
           <form className="ac-form" onSubmit={handleSubmit} noValidate>
@@ -88,7 +79,7 @@ export default function RegisterScreen({ onRegister }) {
                   id="reg-name"
                   type="text"
                   autoComplete="name"
-                  placeholder="Tu nombre completo"
+                  placeholder="Su nombre completo"
                   value={nombre}
                   onChange={e => setNombre(e.target.value)}
                   aria-required="true"
@@ -113,7 +104,7 @@ export default function RegisterScreen({ onRegister }) {
                   id="reg-company"
                   type="text"
                   autoComplete="organization"
-                  placeholder="Nombre de tu empresa"
+                  placeholder="Nombre de su empresa"
                   value={empresa}
                   onChange={e => setEmpresa(e.target.value)}
                 />
@@ -156,18 +147,6 @@ export default function RegisterScreen({ onRegister }) {
               </div>
             </div>
 
-            <div className="ac-divider" aria-hidden="true">o</div>
-
-            <button type="button" className="ac-btn-secondary" onClick={() => setShowQR(true)}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="3" y="3" width="7" height="7" rx="1"/>
-                <rect x="14" y="3" width="7" height="7" rx="1"/>
-                <rect x="3" y="14" width="7" height="7" rx="1"/>
-                <path d="M14 14h3v3"/><path d="M21 21h-4v-4"/><path d="M14 21v-3"/>
-              </svg>
-              Escanear código QR de mi invitación
-            </button>
-
             <div className="ac-actions">
               <button type="submit" className="ac-btn-primary" disabled={!canSubmit || submitting}>
                 <span>{submitting ? 'Activando…' : 'Iniciar simulación'}</span>
@@ -179,7 +158,7 @@ export default function RegisterScreen({ onRegister }) {
                   </span>
                 )}
               </button>
-              <p className="ac-privacy">Tu información se utiliza únicamente para personalizar el reto.</p>
+              <p className="ac-privacy">Su información se utiliza únicamente para personalizar el reto.</p>
             </div>
 
           </form>
@@ -197,7 +176,6 @@ export default function RegisterScreen({ onRegister }) {
 
       </div>
 
-      {showQR && <QRScanner onResult={handleQRResult} onClose={() => setShowQR(false)} />}
     </div>
   );
 }

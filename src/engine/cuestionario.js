@@ -10,10 +10,17 @@ function shuffle(arr) {
 }
 
 // Selecciona 6 preguntas al azar: 4 de todas_correctas + 2 de unica_correcta.
-// Las intercala para que las de conocimiento no aparezcan juntas.
+// Q11 (seguridad_endpoint) y Q3 (soporte_servicios) son anclas fijas porque
+// equipos_computo — presente en casi toda pregunta — los requiere como dependencia.
+// Sin ellas, el motor aplica penalizaciones críticas que llevan el score a 0.
 export function seleccionarPreguntas() {
-  const todas = shuffle(cuestionarioData.preguntas_todas_correctas.preguntas)
-    .slice(0, 4)
+  const preguntas = cuestionarioData.preguntas_todas_correctas.preguntas;
+  const ANCHOR_IDS = new Set([3, 11]);
+  const anchors = preguntas.filter(p => ANCHOR_IDS.has(p.id));
+  const pool = preguntas.filter(p => !ANCHOR_IDS.has(p.id));
+  const random2 = shuffle(pool).slice(0, 2);
+
+  const todas = shuffle([...anchors, ...random2])
     .map(p => ({ ...p, tipo: 'todas_correctas' }));
 
   const unicas = shuffle(cuestionarioData.preguntas_unica_correcta.preguntas)

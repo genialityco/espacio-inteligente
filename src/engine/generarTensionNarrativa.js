@@ -202,7 +202,7 @@ export function generarTensionNarrativa(resultado, ecosistema) {
   // ── 7. Narrativa (microcopy dinámico) ────────────────────────────────
   const narrativaPlantilla = narrativas[estado] || {
     headline: "Ecosistema en evaluación",
-    submensaje: "Selecciona componentes para ver tu diagnóstico.",
+    submensaje: "Seleccione componentes para ver su diagnóstico.",
   };
 
   const narrativa = {

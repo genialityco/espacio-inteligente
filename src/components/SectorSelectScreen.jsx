@@ -37,8 +37,8 @@ export default function SectorSelectScreen({ onSelect }) {
 
         {/* Heading */}
         <div className="sss-heading">
-          <h1 className="ac-title">¿A qué <span className="title-glow">sector</span><br />perteneces?</h1>
-          <p className="ac-subtitle">Personalizamos tu reto según tu industria<br />y contexto operativo.</p>
+          <h1 className="ac-title">¿A qué <span className="title-glow">sector</span><br />pertenece?</h1>
+          <p className="ac-subtitle">Personalizamos su reto según su industria<br />y contexto operativo.</p>
         </div>
 
         {/* Sector grid */}
@@ -58,7 +58,7 @@ export default function SectorSelectScreen({ onSelect }) {
         </div>
 
         {/* Hint */}
-        <p className="sss-hint">Elige tu contexto para personalizar los escenarios</p>
+        <p className="sss-hint">Elija su contexto para personalizar los escenarios</p>
 
         {/* Footer logos */}
         <footer className="sss-footer">

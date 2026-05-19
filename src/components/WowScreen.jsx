@@ -13,7 +13,7 @@ const WOW_CONTENT = {
   },
   optimizado: {
     eyebrow: 'Buen Nivel de Integración',
-    headline: 'Tu Ecosistema\nEstá Optimizado',
+    headline: 'Su Ecosistema\nEstá Optimizado',
     stat: '60%',
     statLabel: 'de riesgos bajo control',
     highlight: 'Un paso más para alcanzar máxima eficiencia',
@@ -29,7 +29,7 @@ const WOW_CONTENT = {
   },
   fragmentado: {
     eyebrow: 'Diagnóstico Detectado',
-    headline: 'Tu Infraestructura\nNecesita Atención',
+    headline: 'Su Infraestructura\nNecesita Atención',
     stat: 'Alto',
     statLabel: 'nivel de riesgo operativo',
     highlight: 'Open Group puede protegerte desde hoy',
@@ -49,6 +49,8 @@ export default function WowScreen({ engineResult, selectedComponents, sector, on
   const wc = WOW_CONTENT[estado] ?? WOW_CONTENT.fragmentado;
   const si = sector ? SECTORES[sector] : null;
   const lines = wc.headline.split('\n');
+  const score = engineResult?.score_global ?? 0;
+  const stat = (estado === 'parcial' || estado === 'optimizado') ? `${score}%` : wc.stat;
 
   return (
     <div className={`wow-screen${visible ? ' wow-visible' : ''}`}>
@@ -73,7 +75,7 @@ export default function WowScreen({ engineResult, selectedComponents, sector, on
       {/* ── 3. Stat + highlight — unified card ───────── */}
       <div className="wow-stats-card" style={{ '--wow-color': wc.color }}>
         <div className="wow-stat-main">
-          <p className="wow-stat-value" style={{ color: wc.color }}>{wc.stat}</p>
+          <p className="wow-stat-value" style={{ color: wc.color }}>{stat}</p>
           <p className="wow-stat-label">{wc.statLabel}</p>
         </div>
         <div className="wow-stats-divider" />

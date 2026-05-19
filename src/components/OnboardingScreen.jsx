@@ -27,7 +27,7 @@ export default function OnboardingScreen({ sector, onStart }) {
 
         {/* Misión */}
         <div className="ob-mission">
-          <h1 className="ob-title">Tu Misión</h1>
+          <h1 className="ob-title">Su Misión</h1>
 
           <div className="ob-badge" style={{ '--sector-color': si.color }}>
             <span>{si.emoji}</span>
@@ -39,9 +39,9 @@ export default function OnboardingScreen({ sector, onStart }) {
           </div>
 
           <p className="ob-desc">
-            Toma 6 decisiones clave en escenarios reales.<br />
-            Construiremos tu ecosistema en tiempo real.<br />
-            Tus decisiones cuestan. El tiempo corre.
+            Tome 6 decisiones clave en escenarios reales.<br />
+            Construiremos su ecosistema en tiempo real.<br />
+            Sus decisiones cuestan. El tiempo corre.
           </p>
         </div>
 

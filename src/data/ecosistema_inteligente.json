@@ -10,13 +10,13 @@
     "rondas": [
       {
         "id": "ronda_1_base",
-        "escenario": "Tu equipo empieza a trabajar híbrido. Cada área resuelve 'como puede'.",
+        "escenario": "Su equipo empieza a trabajar híbrido. Cada área resuelve 'como puede'.",
         "opciones": [
           {
             "texto": "Estandarizamos equipos y espacios desde el inicio",
             "tipo": "correcta",
             "componentes": ["equipos_computo", "mobiliario"],
-            "impacto": "Tu operación gana estabilidad"
+            "impacto": "Su operación gana estabilidad"
           },
           {
             "texto": "Cada área compra lo que necesita",
@@ -43,7 +43,7 @@
       },
       {
         "id": "ronda_2_colaboracion",
-        "escenario": "Tu equipo remoto pierde tiempo coordinando tareas y reuniones.",
+        "escenario": "Su equipo remoto pierde tiempo coordinando tareas y reuniones.",
         "opciones": [
           {
             "texto": "Centralizamos comunicación en una sola plataforma",
@@ -82,7 +82,7 @@
             "texto": "Bloqueamos acceso y protegemos los datos al instante",
             "tipo": "correcta",
             "componentes": ["seguridad_endpoint"],
-            "impacto": "Tus datos están blindados"
+            "impacto": "Sus datos están blindados"
           },
           {
             "texto": "Confiamos en contraseñas y antivirus",
@@ -142,7 +142,7 @@
       },
       {
         "id": "ronda_5_soporte",
-        "escenario": "Tu equipo pierde tiempo resolviendo problemas técnicos.",
+        "escenario": "Su equipo pierde tiempo resolviendo problemas técnicos.",
         "opciones": [
           {
             "texto": "Tenemos soporte proactivo que previene fallos",
@@ -175,7 +175,7 @@
       },
       {
         "id": "ronda_6_escala",
-        "escenario": "Tu empresa crece y necesita escalar su tecnología.",
+        "escenario": "Su empresa crece y necesita escalar su tecnología.",
         "opciones": [
           {
             "texto": "Todo está integrado en un modelo flexible y escalable",
@@ -336,7 +336,7 @@
     },
     {
       "componente": "software_colaboracion",
-      "requiere": ["equipos_computo", "perifericos_colaboracion"],
+      "requiere": ["equipos_computo"],
       "riesgos": ["baja_productividad"]
     },
     {
@@ -351,13 +351,7 @@
     },
     {
       "componente": "modelo_daas",
-      "requiere": [
-        "equipos_computo",
-        "software_colaboracion",
-        "seguridad_endpoint",
-        "backup",
-        "soporte_servicios"
-      ],
+      "requiere": ["equipos_computo", "soporte_servicios"],
       "riesgos": ["fragmentacion_tecnologica"]
     }
   ],
@@ -422,22 +416,22 @@
 
   "diagnosticos": {
     "fragmentado": {
-      "mensaje": "Tu ecosistema tecnológico presenta brechas críticas que comprometen la operación.",
+      "mensaje": "Su ecosistema tecnológico presenta brechas críticas que comprometen la operación.",
       "nivel": "bajo",
       "resumen": "Existen riesgos severos sin resolver. Se requiere acción inmediata para proteger la operación."
     },
     "parcial": {
-      "mensaje": "Tu ecosistema tiene componentes valiosos pero falta integración completa.",
+      "mensaje": "Su ecosistema tiene componentes valiosos pero falta integración completa.",
       "nivel": "medio",
       "resumen": "Hay oportunidades claras de mejora para alcanzar un ecosistema robusto y conectado."
     },
     "optimizado": {
-      "mensaje": "Tu ecosistema está bien balanceado y cubre las necesidades operativas clave.",
+      "mensaje": "Su ecosistema está bien balanceado y cubre las necesidades operativas clave.",
       "nivel": "alto",
-      "resumen": "Las métricas son saludables. Considera sinergias adicionales para maximizar el valor."
+      "resumen": "Las métricas son saludables. Considere sinergias adicionales para maximizar el valor."
     },
     "ecosistema_inteligente": {
-      "mensaje": "Felicidades. Tu ecosistema tecnológico opera como una unidad integrada e inteligente.",
+      "mensaje": "Felicidades. Su ecosistema tecnológico opera como una unidad integrada e inteligente.",
       "nivel": "alto",
       "resumen": "Máxima sinergia alcanzada. Protección, productividad y continuidad en su punto óptimo."
     }
@@ -447,43 +441,43 @@
     {
       "tipo": "metrica_nivel",
       "condicion": { "metrica": "seguridad", "nivel": "bajo" },
-      "mensaje": "Tu ecosistema carece de protección adecuada contra amenazas digitales.",
+      "mensaje": "Su ecosistema carece de protección adecuada contra amenazas digitales.",
       "prioridad": 1
     },
     {
       "tipo": "metrica_nivel",
       "condicion": { "metrica": "continuidad", "nivel": "bajo" },
-      "mensaje": "No cuentas con un plan de continuidad. Un incidente podría detener tu operación.",
+      "mensaje": "No cuenta con un plan de continuidad. Un incidente podría detener su operación.",
       "prioridad": 1
     },
     {
       "tipo": "metrica_nivel",
       "condicion": { "metrica": "productividad", "nivel": "bajo" },
-      "mensaje": "Las herramientas actuales no están potenciando la productividad de tu equipo.",
+      "mensaje": "Las herramientas actuales no están potenciando la productividad de su equipo.",
       "prioridad": 2
     },
     {
       "tipo": "metrica_nivel",
       "condicion": { "metrica": "seguridad", "nivel": "alto" },
-      "mensaje": "Excelente nivel de seguridad. Tus sistemas están bien protegidos.",
+      "mensaje": "Excelente nivel de seguridad. Sus sistemas están bien protegidos.",
       "prioridad": 3
     },
     {
       "tipo": "metrica_nivel",
       "condicion": { "metrica": "productividad", "nivel": "alto" },
-      "mensaje": "Sólida base de productividad. Tus herramientas están bien alineadas al trabajo.",
+      "mensaje": "Sólida base de productividad. Sus herramientas están bien alineadas al trabajo.",
       "prioridad": 3
     },
     {
       "tipo": "metrica_nivel",
       "condicion": { "metrica": "continuidad", "nivel": "alto" },
-      "mensaje": "Tu operación cuenta con respaldo sólido ante incidentes.",
+      "mensaje": "Su operación cuenta con respaldo sólido ante incidentes.",
       "prioridad": 3
     },
     {
       "tipo": "riesgo_activo",
       "condicion": { "riesgo": "vulnerabilidad_ciberseguridad" },
-      "mensaje": "Tus sistemas están expuestos a ciberamenazas. La seguridad debe ser prioridad.",
+      "mensaje": "Sus sistemas están expuestos a ciberamenazas. La seguridad debe ser prioridad.",
       "prioridad": 1
     },
     {
@@ -495,13 +489,13 @@
     {
       "tipo": "riesgo_activo",
       "condicion": { "riesgo": "fragmentacion_tecnologica" },
-      "mensaje": "Tus soluciones tecnológicas operan de forma aislada, reduciendo su efectividad.",
+      "mensaje": "Sus soluciones tecnológicas operan de forma aislada, reduciendo su efectividad.",
       "prioridad": 1
     },
     {
       "tipo": "componente_faltante",
       "condicion": { "componente": "soporte_servicios" },
-      "mensaje": "La falta de soporte técnico impacta directamente la continuidad de tu operación.",
+      "mensaje": "La falta de soporte técnico impacta directamente la continuidad de su operación.",
       "prioridad": 2
     },
     {
@@ -513,13 +507,13 @@
     {
       "tipo": "componente_faltante",
       "condicion": { "componente": "seguridad_endpoint" },
-      "mensaje": "Tus equipos están desprotegidos sin una solución de seguridad endpoint.",
+      "mensaje": "Sus equipos están desprotegidos sin una solución de seguridad endpoint.",
       "prioridad": 1
     },
     {
       "tipo": "sinergia_cercana",
       "condicion": { "sinergia": "ecosistema_inteligente" },
-      "mensaje": "Estás muy cerca de alcanzar un Ecosistema Inteligente completo.",
+      "mensaje": "Está muy cerca de alcanzar un Ecosistema Inteligente completo.",
       "prioridad": 2
     },
     {
@@ -535,20 +529,20 @@
 
     "narrativas": {
       "fragmentado": {
-        "headline": "Tu infraestructura está en riesgo",
-        "submensaje": "Existen brechas críticas que pueden detener tu operación en cualquier momento."
+        "headline": "Su infraestructura está en riesgo",
+        "submensaje": "Existen brechas críticas que pueden detener su operación en cualquier momento."
       },
       "parcial": {
         "headline": "Vas por buen camino, pero hay brechas",
-        "submensaje": "Tu ecosistema tiene potencial, pero necesita componentes clave para funcionar de forma segura."
+        "submensaje": "Su ecosistema tiene potencial, pero necesita componentes clave para funcionar de forma segura."
       },
       "optimizado": {
         "headline": "Buen nivel de integración",
-        "submensaje": "Tu ecosistema cubre lo esencial. Estás a un paso de la máxima eficiencia."
+        "submensaje": "Su ecosistema cubre lo esencial. Está a un paso de la máxima eficiencia."
       },
       "ecosistema_inteligente": {
         "headline": "Ecosistema completamente integrado",
-        "submensaje": "Tu tecnología trabaja como una sola unidad. Máxima eficiencia alcanzada."
+        "submensaje": "Su tecnología trabaja como una sola unidad. Máxima eficiencia alcanzada."
       }
     },
 
@@ -556,26 +550,26 @@
       "fragmentado": {
         "urgencia": "alta",
         "nivel_impacto": "critico",
-        "mensaje": "Tu operación está en riesgo de interrupción.",
-        "consecuencia": "Un fallo podría detener tu negocio sin posibilidad de recuperación inmediata."
+        "mensaje": "Su operación está en riesgo de interrupción.",
+        "consecuencia": "Un fallo podría detener su negocio sin posibilidad de recuperación inmediata."
       },
       "parcial": {
         "urgencia": "media",
         "nivel_impacto": "alto",
-        "mensaje": "Tu negocio opera con puntos ciegos que pueden escalar.",
+        "mensaje": "Su negocio opera con puntos ciegos que pueden escalar.",
         "consecuencia": "Las brechas actuales pueden convertirse en incidentes costosos si no se atienden."
       },
       "optimizado": {
         "urgencia": "baja",
         "nivel_impacto": "medio",
-        "mensaje": "Tu operación es estable pero no está maximizada.",
-        "consecuencia": "Estás dejando valor sobre la mesa al no activar todas las sinergias disponibles."
+        "mensaje": "Su operación es estable pero no está maximizada.",
+        "consecuencia": "Está dejando valor sobre la mesa al no activar todas las sinergias disponibles."
       },
       "ecosistema_inteligente": {
         "urgencia": "baja",
         "nivel_impacto": "bajo",
-        "mensaje": "Tu ecosistema opera en máxima eficiencia.",
-        "consecuencia": "Tu inversión tecnológica está generando el máximo retorno posible."
+        "mensaje": "Su ecosistema opera en máxima eficiencia.",
+        "consecuencia": "Su inversión tecnológica está generando el máximo retorno posible."
       }
     },
 
@@ -586,15 +580,15 @@
       },
       "parcial": {
         "tiempo_estimado": "esta semana",
-        "mensaje": "Las brechas actuales pueden escalar a incidentes reales si no actúas pronto."
+        "mensaje": "Las brechas actuales pueden escalar a incidentes reales si no se actúa pronto."
       },
       "optimizado": {
         "tiempo_estimado": "próximo ciclo",
-        "mensaje": "Un paso más te separa del máximo rendimiento de tu inversión."
+        "mensaje": "Un paso más le separa del máximo rendimiento de su inversión."
       },
       "ecosistema_inteligente": {
         "tiempo_estimado": "mantenimiento",
-        "mensaje": "Mantén tu ecosistema actualizado para preservar la eficiencia alcanzada."
+        "mensaje": "Mantenga su ecosistema actualizado para preservar la eficiencia alcanzada."
       }
     },
 
@@ -618,12 +612,12 @@
     },
 
     "progreso_emocional": [
-      { "max": 20, "mensaje": "Estás lejos de un ecosistema óptimo", "tono": "urgente" },
-      { "max": 40, "mensaje": "Has dado los primeros pasos, pero el camino es largo", "tono": "motivador" },
-      { "max": 60, "mensaje": "Tu ecosistema empieza a tomar forma", "tono": "positivo" },
+      { "max": 20, "mensaje": "Está lejos de un ecosistema óptimo", "tono": "urgente" },
+      { "max": 40, "mensaje": "Ha dado los primeros pasos, pero el camino es largo", "tono": "motivador" },
+      { "max": 60, "mensaje": "Su ecosistema empieza a tomar forma", "tono": "positivo" },
       { "max": 80, "mensaje": "Vas por buen camino hacia un ecosistema robusto", "tono": "entusiasta" },
-      { "max": 95, "mensaje": "Estás muy cerca de la máxima eficiencia", "tono": "celebratorio" },
-      { "max": 100, "mensaje": "Tu ecosistema opera al máximo nivel", "tono": "triunfal" }
+      { "max": 95, "mensaje": "Está muy cerca de la máxima eficiencia", "tono": "celebratorio" },
+      { "max": 100, "mensaje": "Su ecosistema opera al máximo nivel", "tono": "triunfal" }
     ],
 
     "siguiente_logro_por_componente": {
@@ -639,9 +633,9 @@
 
     "evento_wow": {
       "tipo": "ecosistema_completo",
-      "mensaje": "Tu empresa ahora opera con máxima eficiencia y seguridad.",
+      "mensaje": "Su empresa ahora opera con máxima eficiencia y seguridad.",
       "impacto_negocio": "Reducción de riesgos, mejora en productividad y continuidad garantizada con Open Group.",
-      "submensaje": "Cada componente trabaja en sinergia. Tu inversión tecnológica genera el máximo retorno."
+      "submensaje": "Cada componente trabaja en sinergia. Su inversión tecnológica genera el máximo retorno."
     },
 
     "acciones_por_componente": {
@@ -663,7 +657,7 @@
       "software_colaboracion": {
         "accion": "Implementar Software de Colaboración con Open Group",
         "impacto": "Potencia la productividad y comunicación del equipo",
-        "valor": "Herramientas integradas y configuradas para tu operación"
+        "valor": "Herramientas integradas y configuradas para su operación"
       },
       "equipos_computo": {
         "accion": "Renovar Equipos de Cómputo con Open Group",
@@ -706,12 +700,12 @@
       "baja_productividad": {
         "accion": "Potenciar productividad con soluciones de Open Group",
         "impacto": "Cada hora perdida por herramientas inadecuadas es costo directo para el negocio",
-        "valor": "Herramientas correctas configuradas para tu equipo"
+        "valor": "Herramientas correctas configuradas para su equipo"
       },
       "fragmentacion_tecnologica": {
         "accion": "Unificar tecnología con el Ecosistema de Open Group",
         "impacto": "Elimina silos y maximiza el retorno de la inversión tecnológica",
-        "valor": "Un solo partner tecnológico para toda tu operación"
+        "valor": "Un solo partner tecnológico para toda su operación"
       }
     }
   }

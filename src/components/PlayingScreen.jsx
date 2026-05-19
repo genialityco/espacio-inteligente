@@ -1,7 +1,7 @@
 import Graph from './Graph';
 import { SECTORES } from '../data/sectores.js';
 
-const OPTION_LABELS = ['A', 'B', 'C', 'D'];
+const OPTION_LABELS = ['A', 'B', 'C', 'D', 'E'];
 
 export default function PlayingScreen({
   feedback,
@@ -29,6 +29,7 @@ export default function PlayingScreen({
   if (visibleTimeLeft < 2) timerClass += ' danger';
 
   const activeRoundNodes = currentRound.opciones.flatMap(o => o.componentes ?? []);
+  const hasUniqueCorrect = currentRound.opciones.some(o => o.tipo === 'incorrecta');
 
   return (
     <div className="app-container playing-view">
@@ -86,8 +87,8 @@ export default function PlayingScreen({
         <div className="lifelines" role="group" aria-label="Ayudas disponibles">
           <span className="lifelines-label">Ayudas</span>
           <button
-            className={`lifeline-btn${usedFiftyFifty ? ' used' : ''}`}
-            disabled={usedFiftyFifty || feedback !== null}
+            className={`lifeline-btn${usedFiftyFifty ? ' used' : ''}${!hasUniqueCorrect ? ' unavailable' : ''}`}
+            disabled={usedFiftyFifty || feedback !== null || !hasUniqueCorrect}
             onClick={onFiftyFifty}
             aria-label="50/50 — elimina dos opciones incorrectas"
             title="Elimina 2 opciones incorrectas"

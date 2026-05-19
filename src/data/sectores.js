@@ -6,10 +6,10 @@ export const SECTORES = {
     emoji: '🏥',
     nombre: 'Salud',
     color: '#10b981',
-    reto_central: 'Protege vidas protegiendo los datos del paciente',
+    reto_central: 'Proteja vidas protegiendo los datos del paciente',
     rondas: [
       {
-        escenario: 'Tu personal médico necesita acceder a historiales clínicos desde cualquier área del hospital.',
+        escenario: 'Su personal médico necesita acceder a historiales clínicos desde cualquier área del hospital.',
         opciones: [
           { texto: 'Equipamos cada área con dispositivos estandarizados y seguros', impacto: 'El equipo médico trabaja sin improvisaciones ni riesgos' },
           { texto: 'Cada área usa el equipo disponible en ese momento', impacto: 'Médicos improvisando — riesgo de errores por falta de información' },
@@ -70,7 +70,7 @@ export const SECTORES = {
     emoji: '🎓',
     nombre: 'Educación',
     color: '#8b5cf6',
-    reto_central: 'Garantiza el aprendizaje sin interrupciones digitales',
+    reto_central: 'Garantice el aprendizaje sin interrupciones digitales',
     rondas: [
       {
         escenario: 'Docentes y estudiantes inician clases virtuales con equipos inconsistentes y sin estándar.',
@@ -134,19 +134,19 @@ export const SECTORES = {
     emoji: '🏢',
     nombre: 'Corporativo',
     color: '#3b82f6',
-    reto_central: 'Haz que tu operación fluya sin fricción',
+    reto_central: 'Haga que su operación fluya sin fricción',
     rondas: [
       {
-        escenario: 'Tu empresa adopta modelo híbrido y cada área resuelve sus equipos de forma independiente.',
+        escenario: 'Su empresa adopta modelo híbrido y cada área resuelve sus equipos de forma independiente.',
         opciones: [
-          { texto: 'Estandarizamos equipos y espacios de trabajo desde el inicio', impacto: 'Tu operación gana coherencia y eficiencia desde el día uno' },
+          { texto: 'Estandarizamos equipos y espacios de trabajo desde el inicio', impacto: 'Su operación gana coherencia y eficiencia desde el día uno' },
           { texto: 'Cada área compra lo que necesita sin alineación central', impacto: 'Costos invisibles y experiencias de trabajo inconsistentes' },
           { texto: 'Los empleados usan sus propios equipos sin control corporativo', impacto: 'Riesgo de seguridad y productividad fragmentada' },
           { texto: 'Implementamos BYOD con control básico sin monitoreo activo', impacto: 'Empleados remotos sin visibilidad real — brechas de seguridad sin detección' },
         ],
       },
       {
-        escenario: 'Tu equipo remoto pierde horas coordinando tareas, reuniones y documentos.',
+        escenario: 'Su equipo remoto pierde horas coordinando tareas, reuniones y documentos.',
         opciones: [
           { texto: 'Centralizamos toda la operación en una plataforma integrada', impacto: 'La productividad sube — menos reuniones, más resultados' },
           { texto: 'Usamos varias apps según el proyecto o equipo', impacto: 'Los silos digitales cuestan tiempo y generan errores costosos' },
@@ -173,7 +173,7 @@ export const SECTORES = {
         ],
       },
       {
-        escenario: 'Tu equipo pierde horas productivas resolviendo problemas técnicos cotidianos.',
+        escenario: 'Su equipo pierde horas productivas resolviendo problemas técnicos cotidianos.',
         opciones: [
           { texto: 'Soporte proactivo previene fallos antes de que impacten la operación', impacto: 'Cero interrupciones. El equipo se enfoca en generar valor.' },
           { texto: 'Llamamos soporte cuando algo falla', impacto: 'Cada falla cuesta horas de productividad no recuperables' },
@@ -182,7 +182,7 @@ export const SECTORES = {
         ],
       },
       {
-        escenario: 'Tu empresa gana un cliente grande y necesita escalar operaciones en 30 días.',
+        escenario: 'Su empresa gana un cliente grande y necesita escalar operaciones en 30 días.',
         opciones: [
           { texto: 'Escalamos sin caos gracias a un modelo flexible ya integrado', impacto: 'Nuevos colaboradores productivos desde el primer día' },
           { texto: 'Compramos equipo según lo que el proyecto requiere', impacto: 'Costos no planificados que erosionan el margen del proyecto' },
@@ -198,10 +198,10 @@ export const SECTORES = {
     emoji: '🏭',
     nombre: 'Industria',
     color: '#f59e0b',
-    reto_central: 'Evita que tu operación se detenga',
+    reto_central: 'Evite que su operación se detenga',
     rondas: [
       {
-        escenario: 'Tu planta amplía operaciones y el equipo de campo necesita infraestructura tecnológica confiable.',
+        escenario: 'Su planta amplía operaciones y el equipo de campo necesita infraestructura tecnológica confiable.',
         opciones: [
           { texto: 'Estandarizamos los equipos de planta desde el inicio', impacto: 'La operación arranca sin incidentes técnicos' },
           { texto: 'Usamos equipos disponibles en almacén', impacto: 'Incompatibilidades que generan paradas no planificadas' },
@@ -246,7 +246,7 @@ export const SECTORES = {
         ],
       },
       {
-        escenario: 'Tu planta abre una nueva línea de producción y necesita escalar tecnología sin detener operaciones.',
+        escenario: 'Su planta abre una nueva línea de producción y necesita escalar tecnología sin detener operaciones.',
         opciones: [
           { texto: 'Modelo flexible que escala sin requerir paradas operativas', impacto: 'Nueva línea operativa desde el primer turno' },
           { texto: 'Adquirimos e instalamos equipos nuevos por cada proceso', impacto: 'Tiempo de instalación que retrasa el inicio de operaciones' },
@@ -262,10 +262,10 @@ export const SECTORES = {
     emoji: '🏦',
     nombre: 'Financiero',
     color: '#06b6d4',
-    reto_central: 'Protege cada transacción como si fuera crítica',
+    reto_central: 'Proteja cada transacción como si fuera crítica',
     rondas: [
       {
-        escenario: 'Tu equipo operativo trabaja desde múltiples ubicaciones manejando información financiera sensible.',
+        escenario: 'Su equipo operativo trabaja desde múltiples ubicaciones manejando información financiera sensible.',
         opciones: [
           { texto: 'Estandarizamos equipos con configuraciones de seguridad financiera', impacto: 'Las operaciones corren en entornos seguros y controlados' },
           { texto: 'Cada área adquiere equipos según su necesidad inmediata', impacto: 'Dispositivos heterogéneos sin control — riesgo de cumplimiento regulatorio' },
@@ -310,7 +310,7 @@ export const SECTORES = {
         ],
       },
       {
-        escenario: 'Tu institución lanza nuevos productos financieros digitales y necesita escalar sin riesgo.',
+        escenario: 'Su institución lanza nuevos productos financieros digitales y necesita escalar sin riesgo.',
         opciones: [
           { texto: 'Escalamos con modelo que garantiza seguridad y cumplimiento desde el inicio', impacto: 'Nuevos productos disponibles sin interrupciones ni riesgos operativos' },
           { texto: 'Agregamos infraestructura a medida que los productos crecen', impacto: 'Costos no planificados y brechas de seguridad en el escalado' },

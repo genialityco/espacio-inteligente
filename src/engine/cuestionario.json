@@ -34,7 +34,7 @@
       },
       {
         "id": 2,
-        "pregunta": "¿Cómo trabajan tus colaboradores actualmente?",
+        "pregunta": "¿Cómo trabajan sus colaboradores actualmente?",
         "opciones": [
           {
             "texto": "Híbrida",
@@ -58,7 +58,7 @@
       },
       {
         "id": 3,
-        "pregunta": "¿Cómo se reportan y se resuelven los casos de soporte en tu compañía?",
+        "pregunta": "¿Cómo se reportan y se resuelven los casos de soporte en su compañía?",
         "opciones": [
           {
             "texto": "Tenemos una herramienta donde se reportan y miden los casos",
@@ -88,7 +88,7 @@
       },
       {
         "id": 4,
-        "pregunta": "¿Tus equipos de cómputo están preparados para procesos de Inteligencia Artificial?",
+        "pregunta": "¿Sus equipos de cómputo están preparados para procesos de Inteligencia Artificial?",
         "opciones": [
           {
             "texto": "Sí, tenemos equipos con capacidades de IA",
@@ -202,7 +202,7 @@
       },
       {
         "id": 8,
-        "pregunta": "¿Cuántos dispositivos de cómputo tiene tu compañía actualmente?",
+        "pregunta": "¿Cuántos dispositivos de cómputo tiene su compañía actualmente?",
         "opciones": [
           {
             "texto": "1 a 50 dispositivos",
@@ -238,13 +238,13 @@
       },
       {
         "id": 9,
-        "pregunta": "¿Cuáles son los principales retos tecnológicos de tu organización para este año?",
+        "pregunta": "¿Cuáles son los principales retos tecnológicos de su organización para este año?",
         "opciones": [
           {
             "texto": "Mejorar la productividad de mis colaboradores",
             "tipo": "correcta",
             "componentes": ["software_colaboracion"],
-            "impacto": "Foco en productividad: alineado con soluciones que optimizan el rendimiento de tu equipo"
+            "impacto": "Foco en productividad: alineado con soluciones que optimizan el rendimiento de su equipo"
           },
           {
             "texto": "Mejorar los tiempos de servicio para usuarios finales",
@@ -280,7 +280,7 @@
             "texto": "Los tiempos de entrega de los dispositivos",
             "tipo": "correcta",
             "componentes": ["equipos_computo"],
-            "impacto": "Tiempo de entrega: factor crítico para mantener operativas a tus personas sin demoras"
+            "impacto": "Tiempo de entrega: factor crítico para mantener operativas a sus personas sin demoras"
           },
           {
             "texto": "La experiencia y trayectoria del proveedor",
@@ -333,7 +333,7 @@
             "texto": "Una marca de vodka premium",
             "tipo": "incorrecta",
             "componentes": [],
-            "impacto": "Absolute es una solución de seguridad y gestión de dispositivos con persistencia en firmware — protege tu flota incluso sin conexión"
+            "impacto": "Absolute es una solución de seguridad y gestión de dispositivos con persistencia en firmware — protege su flota incluso sin conexión"
           },
           {
             "texto": "Una solución exclusiva de Ciberseguridad de red",
@@ -351,7 +351,7 @@
             "texto": "Una solución de seguridad y gestión de dispositivos con persistencia en firmware",
             "tipo": "correcta",
             "componentes": ["seguridad_endpoint"],
-            "impacto": "¡Correcto! Absolute protege y gestiona toda tu flota de forma remota, incluso en dispositivos robados o sin conexión"
+            "impacto": "¡Correcto! Absolute protege y gestiona toda su flota de forma remota, incluso en dispositivos robados o sin conexión"
           }
         ]
       },
@@ -363,7 +363,7 @@
             "texto": "Solo un aplicativo para mejorar el nivel de servicio",
             "tipo": "incorrecta",
             "componentes": [],
-            "impacto": "TechDirect es mucho más: plataforma todo-en-uno con IA que centraliza tu flota, monitorea proactivamente y optimiza garantías"
+            "impacto": "TechDirect es mucho más: plataforma todo-en-uno con IA que centraliza su flota, monitorea proactivamente y optimiza garantías"
           },
           {
             "texto": "Solo una solución con IA que monitorea dispositivos proactivamente",
@@ -372,22 +372,22 @@
             "impacto": "TechDirect también centraliza la gestión de flota, gestiona garantías y genera alertas — es una plataforma integral"
           },
           {
-            "texto": "Solo una herramienta para centralizar la gestión de tu flota",
+            "texto": "Solo una herramienta para centralizar la gestión de su flota",
             "tipo": "incorrecta",
             "componentes": [],
-            "impacto": "TechDirect incluye además IA proactiva, gestión de garantías y alertas en tiempo real — Open Group la gestiona por ti"
+            "impacto": "TechDirect incluye además IA proactiva, gestión de garantías y alertas en tiempo real — Open Group la gestiona por usted"
           },
           {
             "texto": "Solo un software que genera alertas y mejora garantías",
             "tipo": "incorrecta",
             "componentes": [],
-            "impacto": "TechDirect va más allá de las alertas: centraliza tu flota completa con monitoreo IA y soporte proactivo integrado"
+            "impacto": "TechDirect va más allá de las alertas: centraliza su flota completa con monitoreo IA y soporte proactivo integrado"
           },
           {
             "texto": "Todas las anteriores — es una plataforma integral de gestión",
             "tipo": "correcta",
             "componentes": ["soporte_servicios", "seguridad_endpoint"],
-            "impacto": "¡Correcto! TechDirect es la plataforma integral que centraliza, monitorea, alerta y gestiona garantías de toda tu flota"
+            "impacto": "¡Correcto! TechDirect es la plataforma integral que centraliza, monitorea, alerta y gestiona garantías de toda su flota"
           }
         ]
       },

@@ -1,14 +1,15 @@
 
 // Coordenadas en un ViewBox de 800x800, centro en 400,400
+// Nodos en órbita de radio 300 — distribución octagonal uniforme
 const NODE_LAYOUT = {
-  equipos_computo:          { x: 200, y: 400, label: "Equipos",      color: "#3b82f6" },
-  mobiliario:               { x: 250, y: 550, label: "Mobiliario",   color: "#ec4899" },
-  software_colaboracion:    { x: 400, y: 200, label: "Colaboración", color: "#8b5cf6" },
-  perifericos_colaboracion: { x: 250, y: 250, label: "Periféricos",  color: "#f59e0b" },
-  seguridad_endpoint:       { x: 550, y: 250, label: "Seguridad",    color: "#10b981" },
-  backup:                   { x: 600, y: 400, label: "Backup",       color: "#06b6d4" },
-  soporte_servicios:        { x: 550, y: 550, label: "Soporte",      color: "#f59e0b" },
-  modelo_daas:              { x: 400, y: 600, label: "DaaS",         color: "#6366f1" },
+  equipos_computo:          { x: 100, y: 400, label: "Equipos",      color: "#3b82f6" },
+  mobiliario:               { x: 188, y: 612, label: "Mobiliario",   color: "#ec4899" },
+  software_colaboracion:    { x: 400, y: 100, label: "Colaboración", color: "#8b5cf6" },
+  perifericos_colaboracion: { x: 188, y: 188, label: "Periféricos",  color: "#f59e0b" },
+  seguridad_endpoint:       { x: 612, y: 188, label: "Seguridad",    color: "#10b981" },
+  backup:                   { x: 700, y: 400, label: "Backup",       color: "#06b6d4" },
+  soporte_servicios:        { x: 612, y: 612, label: "Soporte",      color: "#f59e0b" },
+  modelo_daas:              { x: 400, y: 700, label: "DaaS",         color: "#6366f1" },
 };
 
 const CX = 400, CY = 400;
@@ -93,11 +94,11 @@ export default function Graph({ selectedComponents = [], activeRoundNodes = [], 
       <circle cx={CX} cy={CY} r="390" fill="url(#grid-dots)" />
 
       {/* ── Background ──────────────────────────────── */}
-      <circle cx={CX} cy={CY} r="280" fill="url(#hub-ambient)" />
+      <circle cx={CX} cy={CY} r="330" fill="url(#hub-ambient)" />
 
       {/* Orbit rings */}
-      <circle cx={CX} cy={CY} r="238" fill="none" stroke="rgba(6,182,212,0.07)" strokeWidth="1" strokeDasharray="3 10" />
-      <circle cx={CX} cy={CY} r="158" fill="none" stroke="rgba(6,182,212,0.10)" strokeWidth="0.75" />
+      <circle cx={CX} cy={CY} r="330" fill="none" stroke="rgba(6,182,212,0.07)" strokeWidth="1" strokeDasharray="3 10" />
+      <circle cx={CX} cy={CY} r="190" fill="none" stroke="rgba(6,182,212,0.10)" strokeWidth="0.75" />
 
       {/* ── Spokes: hub → nodes ─────────────────────── */}
       {nodes.map(([id, cfg]) => {
@@ -135,7 +136,7 @@ export default function Graph({ selectedComponents = [], activeRoundNodes = [], 
         const isSel   = selectedComponents.includes(id);
         const isActive = activeRoundNodes.includes(id);
         const fade    = showFade && !isActive && !isSel;
-        const r = isSel ? 42 : 32;
+        const r = isSel ? 50 : 38;
 
         return (
           <g
@@ -172,7 +173,7 @@ export default function Graph({ selectedComponents = [], activeRoundNodes = [], 
 
             {/* Inner core dot (selected) */}
             {isSel && (
-              <circle cx={cfg.x} cy={cfg.y} r="6" fill="rgba(255,255,255,0.9)" />
+              <circle cx={cfg.x} cy={cfg.y} r="8" fill="rgba(255,255,255,0.9)" />
             )}
 
             {/* Label */}
@@ -180,7 +181,7 @@ export default function Graph({ selectedComponents = [], activeRoundNodes = [], 
               x={cfg.x} y={cfg.y + r + 18}
               className="node-text"
               opacity={fade ? 0.18 : isSel ? 1 : 0.65}
-              style={{ fontSize: isSel ? '19px' : '17px' }}
+              style={{ fontSize: isSel ? '22px' : '19px' }}
             >
               {cfg.label}
             </text>

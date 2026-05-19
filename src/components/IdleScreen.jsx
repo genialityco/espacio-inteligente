@@ -35,13 +35,13 @@ export default function IdleScreen({ onStart }) {
           <h1 className="stage-title">
             ¿Qué tan <span className="title-glow">inteligente</span> es
             <br />
-            tu ecosistema tecnológico?
+            su ecosistema tecnológico?
           </h1>
           <div className="focus-wrap">
             <span className="ripple" aria-hidden="true" />
             <span className="ripple d2" aria-hidden="true" />
             <span className="ripple d3" aria-hidden="true" />
-            <button className="focus-btn" aria-label="Toca para descubrir">
+            <button className="focus-btn" aria-label="Toque para descubrir">
               <span className="btn-core">
                 <svg
                   className="btn-icon"
@@ -54,18 +54,13 @@ export default function IdleScreen({ onStart }) {
               </span>
             </button>
           </div>
-          <p className="cta-label">Toca para descubrir</p>
+          <p className="cta-label">Toque para descubrir</p>
         </section>
         <div className="idle-bottom">
           <img
-            src="/CORTES/TEXTO_SLOGAN_INTRO.png"
-            alt="Slogan"
-            className="idle-slogan"
-          />
-          <img
-            src="/CORTES/LOGO-OPEN-GROUP.png"
-            alt="Open Group"
-            className="idle-open-group-logo"
+            src="/CORTES/sponsors.png"
+            alt="Sponsors"
+            className="idle-sponsors"
           />
         </div>
         <footer className="stage-footer">
@@ -74,6 +69,20 @@ export default function IdleScreen({ onStart }) {
           <span className="stage-dot" />
         </footer>
       </div>
+
+      {/* Corner brand images — absolute over .stage so no overflow clipping */}
+      <img
+        src="/CORTES/LOGO-OPEN-GROUP.png"
+        alt="Open Group"
+        className="idle-corner-left"
+        aria-hidden="true"
+      />
+      <img
+        src="/CORTES/TEXTO_SLOGAN_INTRO.png"
+        alt="Digitalización inteligente"
+        className="idle-corner-right"
+        aria-hidden="true"
+      />
 
       <div className={`stage-flash${flash ? " go" : ""}`} aria-hidden="true" />
     </div>

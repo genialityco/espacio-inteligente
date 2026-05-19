@@ -51,12 +51,15 @@ export default function ResultScreen({ engineResult, selectedComponents, sector,
   const hasPros = componentNames.length > 0 || sinergias.length > 0;
   const hasCons = riesgos.length > 0 || acciones.length > 0;
 
-  const urgencia = engineResult?.urgencia_accion?.mensaje;
+  const totalItems = componentNames.length + sinergias.length + riesgos.length + acciones.length;
+  const density = totalItems <= 6 ? 'low' : totalItems >= 12 ? 'high' : 'medium';
 
   return (
-    <div className="result-screen">
+    <div className="result-screen" data-density={density}>
 
-      {/* ── 1. Header — sector badge + eyebrow ──────── */}
+      <button className="rs-restart-fixed" onClick={onRestart} title="Reiniciar demostración">↺</button>
+
+      {/* ── 1. Header ── */}
       <div className="rs-header">
         {si && (
           <div className="rs-sector-badge" style={{ '--sector-color': si.color }}>
@@ -66,25 +69,21 @@ export default function ResultScreen({ engineResult, selectedComponents, sector,
         <p className="rs-eyebrow">Diagnóstico · Final</p>
       </div>
 
-      {/* ── 2. Headline zone — headline + texts ─────── */}
+      {/* ── 2. Headline ── */}
       <div className="rs-headline-zone">
         <h1 className="rs-headline" style={{ color: accent }}>
           {engineResult?.narrativa?.headline ?? 'Diagnóstico completado'}
         </h1>
-        <p className="rs-submsg">{engineResult?.narrativa?.submensaje}</p>
-        {urgencia && <p className="rs-urgencia">{urgencia}</p>}
       </div>
 
-      {/* ── 3. Score + Metrics — 2 columns ──────────── */}
+      {/* ── 3. Score + Metrics ── */}
       <div className="rs-score-metrics">
-
         <div className="rs-gauge-col">
           <ScoreGauge score={score} color={accent} />
           <p className="rs-gauge-estado" style={{ color: accent }}>
             {estado.replace(/_/g, ' ')}
           </p>
         </div>
-
         <div className="rs-metrics-col">
           {METRICA_DEFS.map(({ key, label, max, color }) => {
             const val = engineResult?.metricas?.[key] ?? 0;
@@ -100,21 +99,20 @@ export default function ResultScreen({ engineResult, selectedComponents, sector,
             );
           })}
         </div>
-
       </div>
 
-      {/* ── 4. Graph ─────────────────────────────────── */}
+      {/* ── 4. Graph ── */}
       <div className="rs-graph-zone">
         <Graph selectedComponents={selectedComponents} showSynergies={true} />
       </div>
 
-      {/* ── 5. Verdict ───────────────────────────────── */}
+      {/* ── 5. Verdict ── */}
       {(hasPros || hasCons) && (
         <div className={`rs-verdict${(!hasPros || !hasCons) ? ' rs-verdict--solo' : ''}`}>
 
           {hasPros && (
             <div className="rs-col rs-col-pros">
-              <h3 className="rs-col-title rs-pros-title">Lo que lograste</h3>
+              <h3 className="rs-col-title rs-pros-title">Lo que logró</h3>
               {componentNames.length > 0 && (
                 <ul className="rs-list">
                   {componentNames.map((n, i) => (
@@ -162,10 +160,7 @@ export default function ResultScreen({ engineResult, selectedComponents, sector,
                     {acciones.map((a, i) => (
                       <li key={i} className="rs-item">
                         <span className="rs-item-arrow">›</span>
-                        <span>
-                          <strong>{a.accion}</strong>
-                          {a.impacto && <em className="rs-accion-impacto"> — {a.impacto}</em>}
-                        </span>
+                        <span>{a.accion}</span>
                       </li>
                     ))}
                   </ul>
@@ -177,15 +172,12 @@ export default function ResultScreen({ engineResult, selectedComponents, sector,
         </div>
       )}
 
-      {/* ── 6. Footer ────────────────────────────────── */}
+      {/* ── 6. Footer ── */}
       <footer className="rs-footer">
         <div className="rs-logos">
           <img src="/CORTES/LOGO-OPEN-GROUP.png"    alt="Open Group"              className="rs-logo-group" />
           <img src="/CORTES/TEXTO_SLOGAN_INTRO.png" alt="Digitalización inteligente" className="rs-slogan" />
         </div>
-        <button className="rs-restart-btn" onClick={onRestart}>
-          Reiniciar Demostración
-        </button>
       </footer>
 
     </div>

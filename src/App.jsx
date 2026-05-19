@@ -83,7 +83,7 @@ export default function App() {
       completedAt: Date.now(),
     }).catch(() => {});
 
-    setView(result.score_global > 85 ? "wow" : "result");
+    setView("wow");
   };
 
   const handleOptionSelect = (option) => {
