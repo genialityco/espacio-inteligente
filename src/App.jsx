@@ -58,6 +58,17 @@ export default function App() {
   const [scoreModifier, setScoreModifier] = useState(0);
   const sessionIdRef = useRef(generateSessionId());
   const adjustedEngineResultRef = useRef(null);
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    audioRef.current?.play().catch(() => {});
+  }, []);
+
+  useEffect(() => {
+    if (view !== "idle" && audioRef.current?.paused) {
+      audioRef.current.play().catch(() => {});
+    }
+  }, [view]);
 
   const currentRound = preguntaToRonda(cuestionarioPreguntas[roundIdx]);
 
@@ -256,6 +267,7 @@ export default function App() {
 
   return (
     <div className="global-bg">
+      <audio ref={audioRef} src="/music-opg.mpeg" loop preload="auto" />
       <AppBackground />
       <div className="global-vignette" aria-hidden="true" />
       {content}

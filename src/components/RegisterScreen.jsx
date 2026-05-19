@@ -164,6 +164,11 @@ export default function RegisterScreen({ onRegister }) {
           </form>
         </section>
 
+        {/* ── Open Group logo ── */}
+        <div className="ac-brand-below">
+          <img src="/CORTES/LOGO-OPEN-GROUP.png" alt="Open Group" className="ac-opengroup-logo" />
+        </div>
+
         {/* ── Footer ── */}
         <footer className="ac-footer">
           <span className="ac-live">

@@ -174,10 +174,7 @@ export default function ResultScreen({ engineResult, selectedComponents, sector,
 
       {/* ── 6. Footer ── */}
       <footer className="rs-footer">
-        <div className="rs-logos">
-          <img src="/CORTES/LOGO-OPEN-GROUP.png"    alt="Open Group"              className="rs-logo-group" />
-          <img src="/CORTES/TEXTO_SLOGAN_INTRO.png" alt="Digitalización inteligente" className="rs-slogan" />
-        </div>
+        <img src="/CORTES/sponsors-sin-linea.png" alt="Sponsors" className="rs-sponsors" />
       </footer>
 
     </div>

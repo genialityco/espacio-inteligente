@@ -62,6 +62,20 @@ export default function IdleScreen({ onStart }) {
             alt="Sponsors"
             className="idle-sponsors"
           />
+          <div className="idle-logos-row">
+            <img
+              src="/CORTES/LOGO-OPEN-GROUP.png"
+              alt="Open Group"
+              className="idle-corner-left"
+              aria-hidden="true"
+            />
+            <img
+              src="/CORTES/TEXTO_SLOGAN_INTRO.png"
+              alt="Digitalización inteligente"
+              className="idle-corner-right"
+              aria-hidden="true"
+            />
+          </div>
         </div>
         <footer className="stage-footer">
           <span className="stage-dot" />
@@ -69,20 +83,6 @@ export default function IdleScreen({ onStart }) {
           <span className="stage-dot" />
         </footer>
       </div>
-
-      {/* Corner brand images — absolute over .stage so no overflow clipping */}
-      <img
-        src="/CORTES/LOGO-OPEN-GROUP.png"
-        alt="Open Group"
-        className="idle-corner-left"
-        aria-hidden="true"
-      />
-      <img
-        src="/CORTES/TEXTO_SLOGAN_INTRO.png"
-        alt="Digitalización inteligente"
-        className="idle-corner-right"
-        aria-hidden="true"
-      />
 
       <div className={`stage-flash${flash ? " go" : ""}`} aria-hidden="true" />
     </div>
