@@ -23,7 +23,7 @@ export default function PlayingScreen({
   onPauseToggle,
 }) {
   const visibleTimeLeft = Math.max(0, timeLeft - 3);
-  const progressPercent = (visibleTimeLeft / 12) * 100;
+  const progressPercent = (visibleTimeLeft / 16) * 100;
   let timerClass = 'timer-bar';
   if (visibleTimeLeft < 5) timerClass += ' warning';
   if (visibleTimeLeft < 2) timerClass += ' danger';
@@ -34,8 +34,13 @@ export default function PlayingScreen({
   return (
     <div className="app-container playing-view">
       {feedback && (
-        <div className={`feedback-banner feedback-${feedback.type}`}>
-          {feedback.text}
+        <div className="feedback-modal-overlay">
+          <div className={`feedback-modal-card feedback-${feedback.type}`}>
+            <div className="feedback-modal-icon" aria-hidden="true">
+              {feedback.type === 'positive' ? '✓' : '✗'}
+            </div>
+            <p className="feedback-modal-text">{feedback.text}</p>
+          </div>
         </div>
       )}
 

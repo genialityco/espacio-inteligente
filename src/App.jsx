@@ -47,7 +47,7 @@ export default function App() {
   const [sector, setSector] = useState(null);
   const [roundIdx, setRoundIdx] = useState(0);
   const [selectedComponents, setSelectedComponents] = useState([]);
-  const [timeLeft, setTimeLeft] = useState(15.0);
+  const [timeLeft, setTimeLeft] = useState(19.0);
   const [feedback, setFeedback] = useState(null); // { text, type: 'positive'|'negative' }
   const [usedFiftyFifty, setUsedFiftyFifty] = useState(false);
   const [usedAdvisor, setUsedAdvisor] = useState(false);
@@ -116,7 +116,7 @@ export default function App() {
       setAdvisorActive(false);
       if (roundIdx < cuestionarioPreguntas.length - 1) {
         setRoundIdx((r) => r + 1);
-        setTimeLeft(15.0);
+        setTimeLeft(19.0);
       } else {
         finishGame();
       }
@@ -168,7 +168,7 @@ export default function App() {
     setSelectedComponents([]);
     setCuestionarioPreguntas([]);
     setRoundIdx(0);
-    setTimeLeft(15.0);
+    setTimeLeft(19.0);
     setScoreModifier(0);
     setUsedFiftyFifty(false);
     setUsedAdvisor(false);
@@ -219,7 +219,7 @@ export default function App() {
           setSelectedComponents([]);
           setRoundIdx(0);
           setView("playing");
-          setTimeLeft(15.0);
+          setTimeLeft(19.0);
         }}
       />
     );
