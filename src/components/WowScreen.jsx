@@ -45,6 +45,11 @@ export default function WowScreen({ engineResult, selectedComponents, sector, on
     return () => clearTimeout(t);
   }, []);
 
+  useEffect(() => {
+    const t = setTimeout(onContinue, 5000);
+    return () => clearTimeout(t);
+  }, [onContinue]);
+
   const estado = engineResult?.estado ?? 'fragmentado';
   const wc = WOW_CONTENT[estado] ?? WOW_CONTENT.fragmentado;
   const si = sector ? SECTORES[sector] : null;
@@ -105,12 +110,9 @@ export default function WowScreen({ engineResult, selectedComponents, sector, on
         </p>
       </div>
 
-      {/* ── 6. Footer — logo | cta | slogan ─────────── */}
+      {/* ── 6. Footer — logo | slogan ─────────── */}
       <div className="wow-footer">
         <img src="/CORTES/LOGO-OPEN-GROUP.png" alt="Open Group" className="wow-footer-logo" />
-        <button className="wow-continue-btn" style={{ '--wow-color': wc.color }} onClick={onContinue}>
-          →
-        </button>
         <img src="/CORTES/TEXTO_SLOGAN_INTRO.png" alt="Digitalización inteligente" className="wow-footer-slogan" />
       </div>
 
